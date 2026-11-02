@@ -1,0 +1,20 @@
+{
+  "name": "HUB 3DS·A · Repaso 2026",
+  "short_name": "HUB 3DS·A",
+  "description": "Repaso integral del 3.º Desarrollo de Software «A»: módulos, evidencias, recursos y quiz.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HUB 3DS·A · Repaso 2026</title>
+  <meta name="description" content="HUB de repaso del 3.º Desarrollo de Software «A»: todos los módulos de 2026 con fichas, evidencias, recursos y quiz interactivo.">
+  <meta name="theme-color" content="#050505">
+  <meta property="og:title" content="HUB 3DS·A · Repaso 2026">
+  <meta property="og:description" content="Todo el año. Un solo lugar. Módulos, evidencias y quiz del 3.º DS «A».">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("hub3dsa:v1:theme");
+        if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { /* sin almacenamiento: se queda en oscuro */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=20261102.10">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark" aria-hidden="true">3DS</span>
+        <span class="brand-text"><b>HUB</b><small>repaso 2026</small></span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#modulos">Módulos</a>
+        <a href="#ruta">Ruta</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#equipo">Equipo</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="searchToggle" type="button" aria-label="Buscar módulos" title="Buscar (tecla /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="progress-line" aria-hidden="true"><i id="topProgress"></i></div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+        <source src="assets/video/fondovideo.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span> INDEL · 3.º DS «A» · 2026</p>
+        <h1>Todo el año.<br><span class="outline">Un solo lugar.</span></h1>
+        <p class="lead">Un HUB para volver sobre lo aprendido: los módulos de Javier, Arcides y Julio, sus programas, herramientas, instrumentos y evidencias. Sin releer de memoria: recordando, explicando y jugando.</p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#modulos">
+            Explorar los módulos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <button class="btn btn-ghost" id="randomBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>
+            Sorpréndeme
+          </button>
+        </div>
+        <div class="hero-stats" aria-label="Resumen del portal">
+          <div class="stat"><b id="statMods">0</b><span>módulos</span></div>
+          <div class="stat"><b id="statTeachers">0</b><span>docentes</span></div>
+          <div class="stat"><b id="statProgress">0%</b><span>repasado</span></div>
+          <div class="stat"><b id="statQuiz">—</b><span>mejor quiz</span></div>
+        </div>
+        <div class="hero-ticker" aria-hidden="true">
+          <div class="ticker-track" id="tickerTrack"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="carousel-section" id="galeria" aria-label="Programas y lenguajes del año">
+      <div class="wrap carousel-head">
+        <p class="kicker">Galería · Programas y lenguajes</p>
+      </div>
+      <div class="carousel-shell">
+        <div class="carousel-stage" id="carouselStage" aria-live="off"></div>
+        <button class="carousel-nav carousel-prev" id="carouselPrev" type="button" aria-label="Tarjeta anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-nav carousel-next" id="carouselNext" type="button" aria-label="Tarjeta siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <p class="carousel-count" aria-hidden="true"><span id="carouselIndex">1</span> / <span id="carouselTotal">25</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="modulos">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">01 · Mapa del año</p>
+            <h2>Todos los módulos,<br>en un solo index.</h2>
+          </div>
+          <p class="section-note">Filtra por docente, busca una herramienta o marca lo que ya repasaste. <b>Cada ficha se abre con su resumen, instrumentos, programas, recursos, evidencias y quiz.</b></p>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="searchInput" type="search" placeholder="Buscar módulo, herramienta o docente…" aria-label="Buscar módulos" autocomplete="off">
+            <kbd>/</kbd>
+          </div>
+          <div class="chips" id="teacherFilters" role="group" aria-label="Filtrar por docente"></div>
+          <button class="btn btn-ghost btn-sm" id="clearFilters" type="button">Limpiar</button>
+        </div>
+        <div class="chips" id="statusFilters" role="group" aria-label="Filtrar por estado del repaso"></div>
+        <div class="result-line">
+          <span id="resultCount">Cargando módulos…</span>
+          <span id="activeFilter"></span>
+        </div>
+        <div class="grid" id="moduleGrid"></div>
+        <div class="empty" id="emptyState" hidden>
+          <b>No hay módulos con ese filtro.</b>
+          Prueba con otra palabra o limpia los filtros.
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="ruta">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">02 · Ruta del año</p>
+            <h2>El año,<br>en orden.</h2>
+          </div>
+          <p class="section-note">Una línea de tiempo con los hitos de 2026. Haz clic en cualquier hito para abrir su ficha. <b>Lo que no está en el mapa, se pierde; lo que está, se puede repasar.</b></p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">03 · Reto rápido</p>
+            <h2>Cinco preguntas.<br>Todo el año.</h2>
+          </div>
+          <p class="section-note">Un quiz mezclado con preguntas de todos los módulos. <b>Retroalimentación inmediata</b> y tu mejor puntaje se guarda en este navegador.</p>
+        </div>
+        <div class="quiz-box">
+          <div class="quiz-top">
+            <h3>Quiz general</h3>
+            <p class="quiz-score">Mejor puntaje: <b id="globalBest">—</b></p>
+          </div>
+          <div class="quiz-list" id="globalQuiz"></div>
+          <div class="quiz-foot">
+            <button class="btn btn-solid btn-sm" id="gqRestart" type="button">Nuevo quiz</button>
+            <span class="quiz-score" id="gqProgress">0 de 5 respondidas</span>
+          </div>
+          <div class="quiz-result" id="gqResult" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="flashcards">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">04 · Memoria activa</p>
+            <h2>Voltea.<br>Recuerda.</h2>
+          </div>
+          <p class="section-note">Flashcards para repasar definiciones clave sin releer todo. <b>Si la sabes, pasa; si no, vuelve a la ficha.</b></p>
+        </div>
+        <div class="flash-wrap">
+          <div class="flashcard" id="flashcard">
+            <div class="flash-inner">
+              <div class="flash-face front">
+                <small>Pregunta</small>
+                <p id="flashFront">Cargando…</p>
+                <small>Haz clic en «Voltear» para ver la respuesta</small>
+              </div>
+              <div class="flash-face back">
+                <small>Respuesta</small>
+                <p id="flashBack">…</p>
+                <small>Vuelve a la ficha del módulo si necesitas más contexto</small>
+              </div>
+            </div>
+          </div>
+          <div class="flash-side">
+            <button class="btn btn-solid btn-sm" id="flashFlip" type="button">Voltear</button>
+            <button class="btn btn-ghost btn-sm" id="flashPrev" type="button">Anterior</button>
+            <button class="btn btn-ghost btn-sm" id="flashNext" type="button">Siguiente</button>
+            <span class="flash-count" id="flashCount">1 / 12</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tecnologias">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">05 · Caja de herramientas</p>
+            <h2>Todo lo que<br>tocamos.</h2>
+          </div>
+          <p class="section-note">Una nube con las tecnologías del año. <b>Haz clic en una para filtrar los módulos donde se usó.</b></p>
+        </div>
+        <div class="cloud" id="cloud"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="equipo">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">06 · Equipo y entrega</p>
+            <h2>Quién lo hizo<br>y cómo se entrega.</h2>
+          </div>
+          <p class="section-note">Portal del equipo de cuatro integrantes. <b>Consulta sus nombres y el repositorio del proyecto.</b></p>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <h3>Equipo</h3>
+            <p>La base del HUB la construyó Alejandro. El equipo está integrado por:</p>
+            <div class="team-list" id="teamList"></div>
+            <div class="repo-box">
+              <a class="btn btn-solid btn-sm" id="repoLink" href="#" target="_blank" rel="noopener">Repositorio · pendiente</a>
+              <a class="btn btn-ghost btn-sm" id="pagesLink" href="#" target="_blank" rel="noopener">GitHub Pages · pendiente</a>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Rúbrica · 10 puntos</h3>
+            <p>Los criterios de equipo y el punto individual. Úsala como lista de cotejo antes de la feria.</p>
+            <div class="rubric">
+              <div class="rubric-row"><div><b>Contenido por módulo</b><small>2 instrumentos, 2 programas, 2 herramientas, 3 recursos, 1 evidencia y quiz de 3.</small></div><span>3 pts</span></div>
+              <div class="rubric-row"><div><b>Interactividad y dinamismo</b><small>Buscador, filtros, progreso, quiz y modo claro/oscuro sin errores.</small></div><span>2 pts</span></div>
+              <div class="rubric-row"><div><b>Diseño creativo y accesible</b><small>Identidad propia, responsive, contraste y texto alternativo.</small></div><span>2 pts</span></div>
+              <div class="rubric-row"><div><b>GitHub y publicación</b><small>README, commits, tags por día, Pages funcionando y sin claves.</small></div><span>2 pts</span></div>
+              <div class="rubric-row"><div><b>Dominio individual</b><small>Explicar los módulos y el código; responder la pregunta de repaso.</small></div><span>1 pt</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:22px">
+          <h3>Logros de repaso</h3>
+          <p>Se desbloquean al marcar módulos como repasados y al completar quizzes. El avance se guarda en este navegador.</p>
+          <div class="badges" id="badges"></div>
+        </div>
+        <div class="panel" style="margin-top:22px">
+          <h3>Antes de publicar</h3>
+          <p>Checklist rápido para que el portal no falle en la feria.</p>
+          <div class="rubric">
+            <div class="rubric-row"><div><b>Repositorio público y Pages activado</b><small>Settings → Pages → rama main → carpeta raíz.</small></div><span>GitHub</span></div>
+            <div class="rubric-row"><div><b>Rutas relativas y nombres exactos</b><small>GitHub Pages distingue mayúsculas y minúsculas.</small></div><span>Rutas</span></div>
+            <div class="rubric-row"><div><b>README con integrantes, enlace y prompts</b><small>Incluye el registro de uso de IA y los tags v0.2, v0.5 y v1.0.</small></div><span>README</span></div>
+            <div class="rubric-row"><div><b>Sin contraseñas ni datos personales</b><small>Revisa el historial antes de subir.</small></div><span>Seguridad</span></div>
+            <div class="rubric-row"><div><b>Prueba en celular y en incógnito</b><small>Abre la URL pública, navega y responde un quiz.</small></div><span>QA</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        <p><b>HUB 3DS·A</b> · Repaso integral 2026</p>
+        <p>Instituto Nacional Cantón Lourdes (INDEL) · 3.º BTV en Desarrollo de Software «A»</p>
+        <p>Base construida por <b>Josué Alejandro Romero Hernández</b> · <a href="https://github.com/AlejandroRomero-2008">@AlejandroRomero-2008</a></p>
+        <p>Equipo: <b>Christopher Edgardo Márquez Menjívar</b> (<a href="https://github.com/cristopheredgardo13-prog">@cristopheredgardo13-prog</a>), <b>Marvin Alexander Ayala Romero</b> y <b>Emely Eloisa Aguirre Gomez</b>.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#quiz">Quiz</a>
+        <a href="README.md">README</a>
+        <a href="PROMPTS.md">Prompts</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar ficha">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data/modulos.js?v=20261102.11"></script>
+  <script src="js/app.js?v=20261102.11"></script>
+  <script src="js/carousel.js?v=20261102.9"></script>
+</body>
+</html>
