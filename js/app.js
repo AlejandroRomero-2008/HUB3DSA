@@ -168,6 +168,9 @@
       return '<button class="chip" type="button" data-status="' + s.id + '" aria-pressed="' + (state.status === s.id) + '">' + s.nombre + "</button>";
     }).join(""));
   }
+  function normalizeSearch(value) {
+    return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
   function matches(m) {
     if (state.teacher !== "todos" && (m.docenteId || "otro") !== state.teacher) return false;
     if (state.status === "repasados" && !isDone(m.id)) return false;
@@ -180,8 +183,8 @@
       var hay = [
         m.titulo, m.corto, m.resumen, teacherOf(m), m.periodo, m.tipo
       ].concat(m.tags || []).concat(m.herramientas || []).concat(m.programas || []).concat((m.instrumentos || []).map(function (i) { return i.nombre; }));
-      var needle = state.q.toLowerCase();
-      if (!hay.some(function (v) { return String(v).toLowerCase().indexOf(needle) !== -1; })) return false;
+      var needle = normalizeSearch(state.q);
+      if (!hay.some(function (v) { return normalizeSearch(v).indexOf(needle) !== -1; })) return false;
     }
     return true;
   }

@@ -77,3 +77,7 @@ Este archivo documenta cómo se usó la inteligencia artificial durante la const
 - Verificación:
 - Qué aprendí:
 ```
+
+
+## 3 de noviembre de 2026 · Correcciones día 2
+Solicitud: «agregalo tu, arreglalo», después de revisar la guía del miércoles. Se corrigió la búsqueda, se actualizó Pages y la documentación, y se prepararon bitácoras sin inventar experiencias personales ni evidencias.

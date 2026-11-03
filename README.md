@@ -6,19 +6,19 @@ Portal educativo estático para repasar los módulos del **3.º Bachillerato Té
 
 ## Estado
 
-- Versión de trabajo: **v1.0 local** (lista para publicar).
+- Versión de trabajo: **v0.5** · implementación del día 2; contenido y actividades individuales pendientes de verificar.
 - Repositorio: https://github.com/AlejandroRomero-2008/HUB3DSA
-- GitHub Pages: _pendiente de activar_.
+- GitHub Pages: https://alejandroromero-2008.github.io/HUB3DSA/
 - Autor de la base: **Josué Alejandro Romero Hernández** · [@AlejandroRomero-2008](https://github.com/AlejandroRomero-2008).
 
 ## Enlaces
 
 - Repositorio: [AlejandroRomero-2008/HUB3DSA](https://github.com/AlejandroRomero-2008/HUB3DSA)
-- GitHub Pages: `https://TU-USUARIO.github.io/hub-3dsa/` _(actualizar)_
+- GitHub Pages: https://alejandroromero-2008.github.io/HUB3DSA/
 
 ## Qué incluye
 
-- **17 módulos** con ficha completa: resumen, 3 o más aprendizajes, mínimo 2 instrumentos, 2 programas, 2 herramientas, 3 recursos verificados, 1 o más evidencias y quiz de 3 preguntas.
+- **17 módulos** con resumen, aprendizajes, instrumentos, programas, herramientas, recursos y quiz. Solo 7 módulos tienen imagen o enlace de evidencia adjunto; faltan evidencias reales en los otros 10.
 - **Buscador y filtros** por docente, estado del repaso y tecnología.
 - **Progreso del repaso** guardado en `localStorage`.
 - **Quiz por módulo** y **quiz general** de 5 preguntas con retroalimentación inmediata.
@@ -28,13 +28,25 @@ Portal educativo estático para repasar los módulos del **3.º Bachillerato Té
 - **PWA instalable** (manifest + service worker).
 - Diseño responsive, navegación por teclado (`/` para buscar, `Esc` para cerrar) y textos alternativos en las imágenes.
 
-## QA rápido · 2 de noviembre de 2026
+## Revisión técnica · 3 de noviembre de 2026
 
-- 17/17 fichas cumplen los mínimos: aprendizajes, instrumentos, programas, herramientas, recursos, evidencias y quiz.
-- 51 recursos y 51 preguntas en total; 48 URLs comprobadas y 6 enlaces corregidos.
-- MySQL bloquea los chequeos automáticos con 403, pero los 3 enlaces de MySQL se abrieron correctamente en el navegador.
-- Lighthouse: **100** accesibilidad, **100** buenas prácticas y **100** SEO.
-- Probado en escritorio (1440 px), portátil (1200 px) y celular (390 px): modal, pestañas, quiz, filtros, progreso, tema claro/oscuro y flashcards.
+- 17 fichas con al menos 3 aprendizajes, 2 instrumentos, 2 programas, 2 herramientas, 3 recursos y 3 preguntas.
+- Búsqueda corregida para ignorar mayúsculas y acentos.
+- Progreso implementado con localStorage y porcentaje global.
+- Enlace público de Pages comprobado durante la revisión.
+- Pendientes: evidencias reales en 10 módulos, verificar recursos y contenidos contra las guías, revisión cruzada entre estudiantes y bitácoras personales.
+- No se certifican pruebas de Lighthouse ni pruebas manuales en celular en esta revisión.
+
+## Equipo y organización
+
+| Integrante | Responsabilidad propuesta (por confirmar) |
+|---|---|
+| Josué Alejandro Romero Hernández | Coordinación Git y base del portal |
+| Christopher Edgardo Márquez Menjívar | Integración, diseño y pruebas |
+| Marvin Alexander Ayala Romero | Contenido y recursos |
+| Emely Eloisa Aguirre Gomez | Revisión de fichas y accesibilidad |
+
+El reparto de 2 o 3 módulos por persona debe acordarlo el equipo y registrarse en `docs/reparto-modulos.md`. Los nombres de autor del historial no sustituyen aportes o revisiones reales.
 
 ## Módulos del mapa
 

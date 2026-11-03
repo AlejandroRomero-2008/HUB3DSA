@@ -40,7 +40,7 @@ window.HUB = {
 ],
   enlaces: {
     repo: "https://github.com/AlejandroRomero-2008/HUB3DSA",
-    pages: "#"
+    pages: "https://alejandroromero-2008.github.io/HUB3DSA/"
   }
 };
 
