@@ -81,3 +81,7 @@ Este archivo documenta cómo se usó la inteligencia artificial durante la const
 
 ## 3 de noviembre de 2026 · Correcciones día 2
 Solicitud: «agregalo tu, arreglalo», después de revisar la guía del miércoles. Se corrigió la búsqueda, se actualizó Pages y la documentación, y se prepararon bitácoras sin inventar experiencias personales ni evidencias.
+
+
+## Organización del equipo
+Se solicitó proponer roles y bitácoras. Se prepararon roles y repartos propuestos y ejemplos explícitamente identificados como borradores; no se certificaron experiencias individuales ni una revisión inexistente.

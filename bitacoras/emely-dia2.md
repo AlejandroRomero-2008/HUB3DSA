@@ -1,13 +1,26 @@
 # Bitácora del día 2 · Emely Eloisa Aguirre Gomez
 
-Estado: pendiente de completar personalmente. Esta plantilla no acredita participación.
+**BORRADOR DE EJEMPLO: no acredita actividades realizadas.** Cada integrante debe sustituir o confirmar el texto según su experiencia antes de entregarlo. Los ejemplos se basan en tareas del proyecto, no en una declaración personal del estudiante.
 
-- Fecha de la sesión: pendiente.
-- Módulos asignados: pendiente.
-- Hoy aprendí o recordé: pendiente.
-- Lo que me costó: pendiente.
-- Cómo lo resolví (incluye prompts de IA): pendiente.
-- Mañana voy a: pendiente.
-- Dos preguntas cruzadas que respondí y temas por reforzar: pendiente.
-- Ficha de un compañero que revisé e Issue relacionado: pendiente.
-- Mi aporte y commit: pendiente.
+- Rol propuesto: Pruebas y accesibilidad.
+- Fecha de la sesión: completar con la fecha real.
+- Módulos asignados: confirmar en equipo.
+
+## Ejemplo para adaptar
+
+- Actividad: Revisar navegación, textos, contraste y funcionamiento del portal.
+- Hoy aprendí o recordé: cómo esta tarea contribuye a que el portal sirva para repasar los módulos.
+- Lo que me costó: Comprobar el comportamiento en distintos tamaños de pantalla.
+- Cómo lo resolví: Recorrer las fichas y probar controles con teclado.
+- Próximo paso: Registrar un problema concreto en un Issue y verificar su corrección.
+- Uso de IA: indicar las consultas que realmente realizó; consultar PROMPTS.md para el registro general.
+
+## Datos que debe completar el integrante
+
+- Qué hice realmente:
+- Qué aprendí realmente:
+- Dos preguntas de repaso que respondí:
+- Tema que necesito reforzar:
+- Ficha del compañero que revisé:
+- Issue y resultado de la revisión:
+- Commit de mi aporte real:

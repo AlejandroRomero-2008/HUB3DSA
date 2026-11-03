@@ -1,10 +1,12 @@
-# Reparto de módulos
+# Organización propuesta del equipo
 
-Pendiente de acuerdo del equipo. Cada integrante debe seleccionar sus módulos y confirmar su rol. No se asigna autoría de contenido sin confirmación.
+Propuesta de reparto; requiere confirmación de los integrantes. No certifica autoría de trabajos anteriores.
 
-| Integrante | Módulos asignados | Rol confirmado |
+| Integrante | Rol propuesto | Módulos propuestos |
 |---|---|---|
-| Josué Alejandro Romero Hernández | Por confirmar | Por confirmar |
-| Christopher Edgardo Márquez Menjívar | Por confirmar | Por confirmar |
-| Marvin Alexander Ayala Romero | Por confirmar | Por confirmar |
-| Emely Eloisa Aguirre Gomez | Por confirmar | Por confirmar |
+| Josué Alejandro Romero Hernández | Líder Git y publicación | Desarrollo Web I; PHP y MVC; MySQL |
+| Christopher Edgardo Márquez Menjívar | Diseño e integración | SQL Server; Access; Python |
+| Marvin Alexander Ayala Romero | Contenido y recursos | POO con C#; ADO.NET; ASP.NET |
+| Emely Eloisa Aguirre Gomez | Pruebas y accesibilidad | WinForms y WPF; Avalonia; Requerimientos |
+
+Módulos restantes (CRUD SportsPlay, .NET MAUI, Linux, tesis y cooperativas): revisión conjunta y asignación final pendiente. Confirmar que pertenecen al mapa requerido por el docente.
