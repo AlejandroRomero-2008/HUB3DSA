@@ -494,7 +494,7 @@
   function renderTeam() {
     var team = (HUB.equipo || []).slice();
     var html = team.map(function (p) {
-      return '<div class="team-row"><div><b>' + esc(p.nombre) + (p.github ? ' <a href="https://github.com/' + encodeURIComponent(p.github) + '" target="_blank" rel="noopener">@' + esc(p.github) + '</a>' : "") + "</b><small>" + esc(p.carnet ? "Carnet " + p.carnet : "") + (p.modulos ? " · " + esc(p.modulos) : "") + '</small></div><span class="rol">' + esc(p.rol) + "</span></div>";
+      return '<div class="team-row"><b>' + esc(p.nombre) + '</b></div>';
     }).join("");
     for (var i = team.length; i < 4; i++) {
       html += '<div class="team-row pending"><div><b>Integrante ' + (i + 1) + '</b><small>Por invitar al repositorio</small></div><span class="rol">Rol por definir</span></div>';
