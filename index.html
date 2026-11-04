@@ -23,7 +23,7 @@
       } catch (e) { /* sin almacenamiento: se queda en oscuro */ }
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=20261102.10">
+  <link rel="stylesheet" href="css/styles.css?v=20261104.1">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -34,7 +34,7 @@
         <span class="brand-mark" aria-hidden="true">3DS</span>
         <span class="brand-text"><b>HUB</b><small>repaso 2026</small></span>
       </a>
-      <nav class="nav" aria-label="Navegación principal">
+      <nav id="mainNav" class="nav" aria-label="Navegación principal">
         <a href="#modulos">Módulos</a>
         <a href="#ruta">Ruta</a>
         <a href="#quiz">Quiz</a>
@@ -42,6 +42,7 @@
         <a href="#equipo">Equipo</a>
       </nav>
       <div class="top-actions">
+        <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">☰</button>
         <button class="icon-btn" id="searchToggle" type="button" aria-label="Buscar módulos" title="Buscar (tecla /)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         </button>
@@ -55,8 +56,8 @@
 
   <main id="contenido">
     <section class="hero" id="inicio">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
-        <source src="assets/video/fondovideo.mp4" type="video/mp4">
+      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+        <source data-src="assets/video/fondovideo.mp4" type="video/mp4">
       </video>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
@@ -74,6 +75,7 @@
             Sorpréndeme
           </button>
         </div>
+        <button class="btn btn-ghost btn-sm" id="motionToggle" type="button" aria-pressed="false">Pausar animaciones</button>
         <div class="hero-stats" aria-label="Resumen del portal">
           <div class="stat"><b id="statMods">0</b><span>módulos</span></div>
           <div class="stat"><b id="statTeachers">0</b><span>docentes</span></div>
@@ -302,8 +304,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data/modulos.js?v=20261103.3"></script>
-  <script src="js/app.js?v=20261103.3"></script>
-  <script src="js/carousel.js?v=20261103.1"></script>
+  <script src="data/modulos.js?v=20261104.1"></script>
+  <script src="js/app.js?v=20261104.1"></script>
+  <script src="js/carousel.js?v=20261104.1"></script>
 </body>
 </html>

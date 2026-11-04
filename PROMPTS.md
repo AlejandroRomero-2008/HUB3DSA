@@ -85,3 +85,13 @@ Solicitud: «agregalo tu, arreglalo», después de revisar la guía del miércol
 
 ## Organización del equipo
 Se solicitó proponer roles y bitácoras. Se prepararon roles y repartos propuestos y ejemplos explícitamente identificados como borradores; no se certificaron experiencias individuales ni una revisión inexistente.
+
+
+## Revisión del día 3 · 4 de noviembre de 2026
+
+- **Solicitud real:** «Mira si mi proyecto llamado HUB3DSA cumple con lo que pide el HTML, y si falta algo agrégalo y dime qué es lo que le faltaba; además el proyecto se debe adaptar a teléfono. Los cambios los vas a subir a https://github.com/AlejandroRomero-2008/HUB3DSA.git».
+- **Para qué sirvió:** comparar la guía `portal_3DS-A_dia3_viernes.html` con los archivos del repositorio, corregir navegación móvil, tamaños, accesibilidad, rendimiento, quiz y documentación.
+- **Verificación:** auditoría de los 17 módulos y las 51 preguntas; Chrome con varios tamaños; pruebas de persistencia; axe y Lighthouse. Véase `docs/revision-dia3.md` para los resultados finales y límites.
+- **Límite:** no se inventaron evidencias de clase ni declaraciones personales del equipo. El registro anterior se conserva como historial declarado por el proyecto; esta revisión no acredita esas sesiones anteriores.
+
+- **Contexto adicional del usuario:** indicó las carpetas `3DSA` y `C:\xampp\htdocs` para localizar evidencias. Se incorporaron extractos de archivos originales a nueve fichas pendientes; Cooperativas no pudo verificarse.

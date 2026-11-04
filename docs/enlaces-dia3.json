@@ -1,0 +1,238 @@
+[
+  {
+    "url": "https://developer.mozilla.org/es/docs/Web/HTML",
+    "status": 200,
+    "final": "https://developer.mozilla.org/es/docs/Web/HTML"
+  },
+  {
+    "url": "https://developer.mozilla.org/es/docs/Web/CSS",
+    "status": 200,
+    "final": "https://developer.mozilla.org/es/docs/Web/CSS"
+  },
+  {
+    "url": "https://developer.mozilla.org/es/docs/Web/JavaScript",
+    "status": 200,
+    "final": "https://developer.mozilla.org/es/docs/Web/JavaScript"
+  },
+  {
+    "url": "https://www.php.net/manual/es/",
+    "status": 200,
+    "final": "https://www.php.net/manual/es/"
+  },
+  {
+    "url": "https://www.php.net/manual/es/book.session.php",
+    "status": 200,
+    "final": "https://www.php.net/manual/es/book.session.php"
+  },
+  {
+    "url": "https://www.php.net/manual/es/language.oop5.php",
+    "status": 200,
+    "final": "https://www.php.net/manual/es/language.oop5.php"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://dev.mysql.com/doc/refman/8.0/en/tutorial.html",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://www.mysql.com/products/workbench/",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/sql/sql-server/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/sql/sql-server/?view=sql-server-ver17"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/sql/t-sql/language-reference",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/sql/t-sql/language-reference?view=sql-server-ver17"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?view=sql-server-ver17"
+  },
+  {
+    "url": "https://support.microsoft.com/es-es/access",
+    "status": 200,
+    "final": "https://support.microsoft.com/es-es/access/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/office/client-developer/access/desktop-database-reference/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/office/client-developer/access/desktop-database-reference/"
+  },
+  {
+    "url": "https://support.microsoft.com/es-es/excel",
+    "status": 200,
+    "final": "https://support.microsoft.com/es-es/excel/"
+  },
+  {
+    "url": "https://docs.python.org/es/3/",
+    "status": 200,
+    "final": "https://docs.python.org/es/3/"
+  },
+  {
+    "url": "https://docs.python.org/es/3/library/tkinter.html",
+    "status": 200,
+    "final": "https://docs.python.org/es/3/library/tkinter.html"
+  },
+  {
+    "url": "https://peps.python.org/pep-0008/",
+    "status": 200,
+    "final": "https://peps.python.org/pep-0008/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/desktop/winforms/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/desktop/winforms/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/desktop/wpf/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/desktop/wpf/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/csharp/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/csharp/"
+  },
+  {
+    "url": "https://docs.avaloniaui.net/",
+    "status": 200,
+    "final": "https://docs.avaloniaui.net/"
+  },
+  {
+    "url": "https://github.com/AvaloniaUI/Avalonia",
+    "status": 200,
+    "final": "https://github.com/AvaloniaUI/Avalonia"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/azure/architecture/guide/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/azure/architecture/guide/"
+  },
+  {
+    "url": "https://www.atlassian.com/es/agile/requirements",
+    "status": 200,
+    "final": "https://www.atlassian.com/es/agile/product-management/requirements"
+  },
+  {
+    "url": "https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/",
+    "status": 200,
+    "final": "https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/inheritance",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/inheritance"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/polymorphism",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/polymorphism"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/framework/data/adonet/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/framework/data/adonet/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/api/system.data.sqlclient.sqlconnection",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/api/system.data.sqlclient.sqlconnection?view=netframework-4.8.1"
+  },
+  {
+    "url": "https://www.connectionstrings.com/",
+    "status": 200,
+    "final": "https://www.connectionstrings.com/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/aspnet/core/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/aspnet/core/?view=aspnetcore-10.0"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/aspnet/core/razor-pages/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/aspnet/core/razor-pages/?view=aspnetcore-10.0"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/aspnet/web-forms/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/aspnet/web-forms/"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/aspnet/core/data/ef-mvc/crud",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/aspnet/core/data/ef-mvc/crud?view=aspnetcore-10.0"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/api/system.web.ui.webcontrols.gridview",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/api/system.web.ui.webcontrols.gridview?view=netframework-4.8.1"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/maui/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/maui/?view=net-maui-10.0"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/maui/xaml/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/maui/xaml/?view=net-maui-10.0"
+  },
+  {
+    "url": "https://learn.microsoft.com/es-es/dotnet/maui/fundamentals/data-binding/",
+    "status": 200,
+    "final": "https://learn.microsoft.com/es-es/dotnet/maui/fundamentals/data-binding/?view=net-maui-10.0"
+  },
+  {
+    "url": "https://ubuntu.com/tutorials/command-line-for-beginners",
+    "status": 200,
+    "final": "https://ubuntu.com/tutorials/command-line-for-beginners"
+  },
+  {
+    "url": "https://linuxcommand.org/",
+    "status": 200,
+    "final": "https://linuxcommand.org/"
+  },
+  {
+    "url": "https://www.gnu.org/software/bash/manual/bash.html",
+    "error": "<urlopen error _ssl.c:1015: The handshake operation timed out>"
+  },
+  {
+    "url": "https://getbootstrap.com/docs/5.3/",
+    "status": 200,
+    "final": "https://getbootstrap.com/docs/5.3/"
+  },
+  {
+    "url": "https://www.ica.coop/es",
+    "status": 200,
+    "final": "https://www.ica.coop/es"
+  },
+  {
+    "url": "https://www.un.org/es/observances/cooperatives-day",
+    "status": 200,
+    "final": "https://www.un.org/es/observances/cooperatives-day"
+  },
+  {
+    "url": "https://www.conamype.gob.sv/",
+    "status": 200,
+    "final": "https://www.conamype.gob.sv/"
+  }
+]

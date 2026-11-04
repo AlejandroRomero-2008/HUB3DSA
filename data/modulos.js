@@ -11,7 +11,6 @@ window.HUB = {
   especialidad: "3.º Bachillerato Técnico Vocacional en Desarrollo de Software «A»",
   anio: 2026,
   autor: "Josué Alejandro Romero Hernández",
-  carnet: "3381027",
   docentes: [
     { id: "javier", nombre: "Javier Mineros", completo: "Javier Arturo García Mineros" },
     { id: "arcides", nombre: "Arcides Canales", completo: "Arcides Canales" },
@@ -20,7 +19,6 @@ window.HUB = {
   equipo: [
     {
         "nombre": "Josué Alejandro Romero Hernández",
-        "carnet": "3381027",
         "rol": "Creador del repositorio",
         "github": "AlejandroRomero-2008"
     },
@@ -282,6 +280,7 @@ window.MODULOS = [
       { nombre: "PEP 8 · Guía de estilo", url: "https://peps.python.org/pep-0008/" }
     ],
     evidencias: [
+      {"nombre":"Ventana con CustomTkinter","detalle":"Práctica encontrada: creación de ventana, etiqueta, botón y actualización de texto mediante un evento.","url":"assets/evidencias/python.html"},
       { nombre: "BICHOBOT.py", detalle: "Chatbot de consola con respuestas humorísticas y un diccionario de palabras clave." },
       { nombre: "Contraseñas.py", detalle: "Generador de contraseñas aleatorias con medición de fuerza." },
       { nombre: "Mi primera ventana.py", detalle: "Primera interfaz gráfica con Tkinter." }
@@ -365,6 +364,7 @@ window.MODULOS = [
       { nombre: ".NET · Microsoft Learn", url: "https://learn.microsoft.com/es-es/dotnet/" }
     ],
     evidencias: [
+      {"nombre":"Avalonia · eventos y municipios dependientes","detalle":"Extracto real del formulario: inicialización, eventos de controles y selección de municipios según el departamento. El archivo también contiene validaciones adicionales.","url":"assets/evidencias/avalonia.html"},
       { nombre: "SEMANA 3 DE AVALONIA", detalle: "Ejercicios 6 a 10 con layouts y controles." },
       { nombre: "Rayo y RAYOO", detalle: "Proyectos de práctica con Avalonia." }
     ],
@@ -406,6 +406,7 @@ window.MODULOS = [
       { nombre: "Modelo entidad-relación · Visual Paradigm", url: "https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/" }
     ],
     evidencias: [
+      {"nombre":"Gym Big Strong · requerimientos funcionales y no funcionales","detalle":"Documento real del sistema de gimnasio: registro de clientes, pagos, asistencia, roles y requisitos de respuesta y seguridad.","url":"assets/evidencias/requerimientos.html"},
       { nombre: "SLA del Sistema de Gestión de Gimnasio", detalle: "Disponibilidad, responsabilidades, seguridad, vigencia y firmas." },
       { nombre: "Instrumento de preguntas", detalle: "Entrevista completa con 20 preguntas y respuestas del cliente." },
       { nombre: "Tabla de entidades", detalle: "Usuarios, clientes, membresías, pagos, asistencias y rutinas." }
@@ -448,6 +449,7 @@ window.MODULOS = [
       { nombre: "Polimorfismo en C#", url: "https://learn.microsoft.com/es-es/dotnet/csharp/fundamentals/object-oriented/polymorphism" }
     ],
     evidencias: [
+      {"nombre":"POO · venta al contado y herencia","detalle":"La clase Contado hereda de Venta y calcula descuentos según el subtotal. Es un extracto del caso desarrollado 5.","url":"assets/evidencias/poo-csharp.html"},
       { nombre: "DESARROLLO_1_3381027", detalle: "Proyecto de práctica con la clase Promedio y formulario de cálculo." },
       { nombre: "Práctica 02", detalle: "Ejercicio de herencia y polimorfismo con varias clases." }
     ],
@@ -489,6 +491,7 @@ window.MODULOS = [
       { nombre: "Cadenas de conexión", url: "https://www.connectionstrings.com/" }
     ],
     evidencias: [
+      {"nombre":"ADO.NET · conexión de la práctica Películas","detalle":"Práctica real de acceso a datos con el proveedor OleDb de ADO.NET. Se muestra el cierre de conexión según su estado; la cadena de conexión no se publica. El proyecto original requiere revisar y parametrizar sus consultas antes de usarse con datos reales.","url":"assets/evidencias/acceso-datos.html"},
       { nombre: "PELICULAS3381027", detalle: "Aplicación conectada a una base de datos Access." },
       { nombre: "Cadena_consulta_3381027", detalle: "Ejercicio de cadena de conexión y consulta a SQL Server." }
     ],
@@ -530,6 +533,7 @@ window.MODULOS = [
       { nombre: "ASP.NET Web Forms", url: "https://learn.microsoft.com/es-es/aspnet/web-forms/" }
     ],
     evidencias: [
+      {"nombre":"Ositos Studios · aplicación ASP.NET Web Forms","detalle":"Captura existente del sistema Ositos Studios. La carpeta original contiene páginas .aspx y archivos C# de code-behind; evidencia compartida con el módulo de tesis.","img":"assets/evidencias/ositos.png"},
       { nombre: "RutasPractica", detalle: "Proyecto de rutas con Razor Pages." },
       { nombre: "Cookies_3381027 y HttpSessionState_3381027", detalle: "Prácticas de manejo de estado." },
       { nombre: "ApiSaludo", detalle: "Primera API con ASP.NET." }
@@ -572,6 +576,7 @@ window.MODULOS = [
       { nombre: "GridView", url: "https://learn.microsoft.com/es-es/dotnet/api/system.web.ui.webcontrols.gridview" }
     ],
     evidencias: [
+      {"nombre":"SportsPlay · listado y controles de edición","detalle":"Extracto ASPX del proyecto SportsPlay: ListView enlazado a un origen de datos y controles para editar y eliminar registros. No se publican credenciales ni bases de datos.","url":"assets/evidencias/crud-sqlserver.html"},
       { nombre: "GRUD1_SportsPlay_3381027", detalle: "CRUD completo con formulario y GridView." },
       { nombre: "GRUD2 y GRUD3", detalle: "Análisis de resultados y ejercicio complementario." }
     ],
@@ -613,6 +618,7 @@ window.MODULOS = [
       { nombre: "Data binding", url: "https://learn.microsoft.com/es-es/dotnet/maui/fundamentals/data-binding/" }
     ],
     evidencias: [
+      {"nombre":"MAUI · cálculo de sueldo por horas","detalle":"Página móvil real que lee horas y pago por hora, calcula el sueldo y muestra el resultado con DisplayAlert.","url":"assets/evidencias/maui.html"},
       { nombre: "OsitoGames y MatchGame", detalle: "Juego de memoria y lógica de coincidencias." },
       { nombre: "ConversorDivisas3381027", detalle: "App de conversión de divisas con interfaz XAML." },
       { nombre: "Todo3381027", detalle: "Lista de tareas con data binding y asincronía." }
@@ -654,6 +660,7 @@ window.MODULOS = [
       { nombre: "Guía de Bash", url: "https://www.gnu.org/software/bash/manual/bash.html" }
     ],
     evidencias: [
+      {"nombre":"Manual de Linux · comandos básicos","detalle":"Extracto del manual entregado: ls, cd, pwd, cat y mkdir, con ejemplos. Se excluye la portada con información de estudiantes.","url":"assets/evidencias/linux.html"},
       { nombre: "Manual de Linux", detalle: "Documento con la práctica completa y explicación de comandos." }
     ],
     quiz: [

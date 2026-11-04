@@ -1,5 +1,5 @@
 /* HUB 3DS·A — service worker mínimo para que el portal sea instalable */
-const CACHE = "hub3dsa-v11";
+const CACHE = "hub3dsa-v12";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,7 +8,6 @@ const ASSETS = [
   "./js/carousel.js",
   "./data/modulos.js",
   "./assets/icon.svg",
-  "./assets/video/fondovideo.mp4",
   "./manifest.webmanifest"
 ];
 
@@ -19,13 +18,15 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith("hub3dsa-") && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  const requestURL = new URL(event.request.url);
+  if (requestURL.origin !== self.location.origin || !requestURL.href.startsWith(self.registration.scope) || event.request.headers.has("range") || /\.mp4$/.test(requestURL.pathname)) return;
 
   // HTML siempre red primero: así una edición publicada se ve al recargar.
   if (event.request.mode === "navigate" || event.request.destination === "document") {
@@ -33,7 +34,7 @@ self.addEventListener("fetch", (event) => {
       fetch(event.request, { cache: "no-store" })
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
+          caches.open(CACHE).then((cache) => response.ok && cache.put(event.request, copy)).catch(() => {});
           return response;
         })
         .catch(() => caches.match(event.request, { ignoreSearch: true }).then((cached) => cached || caches.match("./index.html")))
@@ -50,7 +51,7 @@ self.addEventListener("fetch", (event) => {
       fetch(event.request, { cache: "no-store" })
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
+          caches.open(CACHE).then((cache) => response.ok && cache.put(event.request, copy)).catch(() => {});
           return response;
         })
         .catch(() => caches.match(event.request, { ignoreSearch: true }))
@@ -64,7 +65,7 @@ self.addEventListener("fetch", (event) => {
       const network = fetch(event.request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy)).catch(() => {});
+          caches.open(CACHE).then((cache) => response.ok && cache.put(event.request, copy)).catch(() => {});
           return response;
         })
         .catch(() => cached);

@@ -103,6 +103,7 @@
     saveProgress();
     renderCards();
     renderStats();
+    renderTimeline();
     renderTeam();
     if (keepFocus) {
       var input = document.querySelector('.card[data-id="' + id + '"] [data-done]');
@@ -248,7 +249,7 @@
     if (e.img) {
       return '<div class="ev-card"><img src="' + esc(e.img) + '" alt="Evidencia: ' + esc(e.nombre) + '" loading="lazy"><div class="ev-body"><b>' + esc(e.nombre) + "</b><p>" + esc(e.detalle || "") + "</p></div></div>";
     }
-    return '<div class="ev-file"><span class="ico">FILE</span><div><b>' + esc(e.nombre) + "</b><p>" + esc(e.detalle || "") + "</p></div></div>";
+    return (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">Abrir evidencia ↗</a>' : '<p class="evidence-pending">Pendiente de adjuntar archivo o enlace verificable.</p>') + '<div class="ev-file"><span class="ico">FILE</span><div><b>' + esc(e.nombre) + "</b><p>" + esc(e.detalle || "") + "</p></div></div>";
   }
 
   function modalHTML(m) {
@@ -256,36 +257,36 @@
     var resumen =
       '<div class="ficha-grid">' +
         '<div>' +
-          '<div class="ficha-block"><h4>Lo que aprendí</h4><ul>' + (m.aprendizajes || []).map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ul></div>" +
-          '<div class="ficha-block"><h4>Palabras clave</h4><div class="pills">' + (m.tags || []).map(function (t) { return '<span class="pill">' + esc(t) + "</span>"; }).join("") + "</div></div>" +
-          '<div class="ficha-block"><h4>Evidencia principal</h4><div class="evidence">' + (m.evidencias || []).slice(0, 1).map(evidenceHTML).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Lo que aprendí</h3><ul>' + (m.aprendizajes || []).map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ul></div>" +
+          '<div class="ficha-block"><h3>Palabras clave</h3><div class="pills">' + (m.tags || []).map(function (t) { return '<span class="pill">' + esc(t) + "</span>"; }).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Evidencia principal</h3><div class="evidence">' + (m.evidencias || []).slice(0, 1).map(evidenceHTML).join("") + "</div></div>" +
         "</div>" +
         '<div>' +
-          '<div class="ficha-block"><h4>En números</h4><ul>' +
+          '<div class="ficha-block"><h3>En números</h3><ul>' +
             "<li><b>" + (m.instrumentos || []).length + "</b> instrumentos</li>" +
             "<li><b>" + (m.programas || []).length + "</b> programas</li>" +
             "<li><b>" + (m.herramientas || []).length + "</b> herramientas</li>" +
             "<li><b>" + (m.recursos || []).length + "</b> recursos</li>" +
             "<li><b>" + (m.quiz || []).length + "</b> preguntas de quiz</li>" +
           "</ul></div>" +
-          '<div class="ficha-block"><h4>Cómo se usó</h4><p style="color:var(--muted);font-size:14px;margin:0">' + esc(m.corto || "") + "</p></div>" +
+          '<div class="ficha-block"><h3>Cómo se usó</h3><p style="color:var(--muted);font-size:14px;margin:0">' + esc(m.corto || "") + "</p></div>" +
         "</div>" +
       "</div>";
 
     var ficha =
       '<div class="ficha-grid">' +
         '<div>' +
-          '<div class="ficha-block"><h4>Instrumentos</h4><div class="inst">' + (m.instrumentos || []).map(function (i) {
+          '<div class="ficha-block"><h3>Instrumentos</h3><div class="inst">' + (m.instrumentos || []).map(function (i) {
             return '<div class="inst-item"><span>' + esc(i.tipo || "Instrumento") + "</span><b>" + esc(i.nombre) + "</b><p>" + esc(i.detalle || "") + "</p></div>";
           }).join("") + "</div></div>" +
-          '<div class="ficha-block"><h4>Recursos para seguir</h4><div class="links">' + (m.recursos || []).map(function (r) {
+          '<div class="ficha-block"><h3>Recursos para seguir</h3><div class="links">' + (m.recursos || []).map(function (r) {
             return '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.nombre) + "<span>↗</span></a>";
           }).join("") + "</div></div>" +
         "</div>" +
         '<div>' +
-          '<div class="ficha-block"><h4>Programas</h4><div class="pills">' + (m.programas || []).map(function (p) { return '<span class="pill">' + esc(p) + "</span>"; }).join("") + "</div></div>" +
-          '<div class="ficha-block"><h4>Herramientas</h4><div class="pills">' + (m.herramientas || []).map(function (h) { return '<span class="pill">' + esc(h) + "</span>"; }).join("") + "</div></div>" +
-          '<div class="ficha-block"><h4>Evidencias</h4><div class="evidence">' + (m.evidencias || []).map(evidenceHTML).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Programas</h3><div class="pills">' + (m.programas || []).map(function (p) { return '<span class="pill">' + esc(p) + "</span>"; }).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Herramientas</h3><div class="pills">' + (m.herramientas || []).map(function (h) { return '<span class="pill">' + esc(h) + "</span>"; }).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Evidencias</h3><div class="evidence">' + (m.evidencias || []).map(evidenceHTML).join("") + "</div></div>" +
         "</div>" +
       "</div>";
 
@@ -296,10 +297,12 @@
             q.opciones.map(function (o, oi) {
               return '<button class="q-opt" type="button" data-o="' + oi + '"><span class="letter">' + String.fromCharCode(65 + oi) + "</span><span>" + esc(o) + "</span></button>";
             }).join("") +
-          '</div><p class="q-feedback"></p></div>';
+          '</div><p class="q-feedback" role="status"></p></div>';
         }).join("") +
       "</div>" +
-      '<div class="quiz-summary" data-quiz-result="' + esc(m.id) + '"></div>';
+      '<p class="module-best" role="status">Mejor puntaje de esta ficha: ' + loadJSON(STORE + ":quiz:" + m.id, 0) + '%</p>' +
+      '<button class="btn btn-ghost btn-sm" type="button" id="moduleQuizRestart">Reintentar quiz</button>' +
+      '<div class="quiz-summary" role="status" data-quiz-result="' + esc(m.id) + '"></div>';
 
     return '<div class="modal-hero">' +
         '<div class="modal-kicker"><span>Módulo ' + pad(m.n) + '</span><span class="pill">' + esc(teacherOf(m)) + '</span><span>' + esc(m.periodo) + '</span><span class="pill">' + esc(m.tipo) + '</span></div>' +
@@ -308,17 +311,17 @@
         '<div class="modal-actions">' +
           '<button class="btn btn-solid btn-sm" id="modalDone" type="button">' + (done ? "✓ Repasado" : "Marcar como repasado") + "</button>" +
           '<button class="btn btn-ghost btn-sm" id="modalCopy" type="button">Copiar enlace de la ficha</button>' +
-          '<span class="quiz-score">' + (m.quiz || []).length + " preguntas · " + (m.evidencias || []).length + " evidencias</span>" +
+          '<span class="quiz-score">' + (m.quiz || []).length + " preguntas · " + (m.evidencias || []).filter(function (e) { return e.img || e.url; }).length + " evidencias adjuntas</span>" +
         "</div>" +
       "</div>" +
       '<div class="tabs" role="tablist" aria-label="Contenido de la ficha">' +
-        '<button class="tab" type="button" role="tab" aria-selected="true" data-tab="resumen">Resumen</button>' +
-        '<button class="tab" type="button" role="tab" aria-selected="false" data-tab="ficha">Ficha completa</button>' +
-        '<button class="tab" type="button" role="tab" aria-selected="false" data-tab="quiz">Quiz</button>' +
+        '<button class="tab" type="button" role="tab" aria-selected="true" id="tab-resumen" aria-controls="panel-resumen" tabindex="0" data-tab="resumen">Resumen</button>' +
+        '<button class="tab" type="button" role="tab" aria-selected="false" id="tab-ficha" aria-controls="panel-ficha" tabindex="-1" data-tab="ficha">Ficha completa</button>' +
+        '<button class="tab" type="button" role="tab" aria-selected="false" id="tab-quiz" aria-controls="panel-quiz" tabindex="-1" data-tab="quiz">Quiz</button>' +
       "</div>" +
-      '<div class="tab-panel" data-panel="resumen">' + resumen + "</div>" +
-      '<div class="tab-panel" data-panel="ficha" hidden>' + ficha + "</div>" +
-      '<div class="tab-panel" data-panel="quiz" hidden>' + quiz + "</div>";
+      '<div class="tab-panel" role="tabpanel" id="panel-resumen" aria-labelledby="tab-resumen" data-panel="resumen">' + resumen + "</div>" +
+      '<div class="tab-panel" role="tabpanel" id="panel-ficha" aria-labelledby="tab-ficha" data-panel="ficha" hidden>' + ficha + "</div>" +
+      '<div class="tab-panel" role="tabpanel" id="panel-quiz" aria-labelledby="tab-quiz" data-panel="quiz" hidden>' + quiz + "</div>";
   }
 
   function openModal(id) {
@@ -352,6 +355,7 @@
     $$(".tab", $("#modalBody")).forEach(function (b) {
       var on = b.getAttribute("data-tab") === name;
       b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
     });
     $$(".tab-panel", $("#modalBody")).forEach(function (p) {
       p.hidden = p.getAttribute("data-panel") !== name;
@@ -398,7 +402,7 @@
         q.opciones.map(function (o, oi) {
           return '<button class="q-opt" type="button" data-o="' + oi + '"><span class="letter">' + String.fromCharCode(65 + oi) + "</span><span>" + esc(o) + "</span></button>";
         }).join("") +
-      '</div><p class="q-feedback"></p></div>';
+      '</div><p class="q-feedback" role="status"></p></div>';
     }).join("");
     setHTML($("#gqProgress"), "0 de " + globalState.questions.length + " respondidas");
     var result = $("#gqResult");
@@ -497,7 +501,7 @@
   function renderTeam() {
     var team = (HUB.equipo || []).slice();
     var html = team.map(function (p) {
-      return '<div class="team-row"><b>' + esc(p.nombre) + '</b></div>';
+      return '<div class="team-row"><b>' + esc(p.nombre) + '</b><span class="rol">' + esc(p.rol || 'Rol por confirmar') + '</span></div>';
     }).join("");
     for (var i = team.length; i < 4; i++) {
       html += '<div class="team-row pending"><div><b>Integrante ' + (i + 1) + '</b><small>Por invitar al repositorio</small></div><span class="rol">Rol por definir</span></div>';
@@ -536,6 +540,35 @@
 
   /* ------------------------------ eventos ------------------------------ */
   function bind() {
+    var menu = $("#menuToggle"), nav = $("#mainNav");
+    function closeMenu() { nav.classList.remove("is-open"); menu.setAttribute("aria-expanded", "false"); menu.setAttribute("aria-label", "Abrir menú"); }
+    menu.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      menu.setAttribute("aria-expanded", String(open));
+      menu.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    });
+    nav.addEventListener("click", function (e) { if (e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { closeMenu(); menu.focus(); } });
+    $("#modalBody").addEventListener("keydown", function (e) {
+      var tab = e.target.closest("[role=tab]");
+      if (!tab || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+      e.preventDefault();
+      var tabs = $$("[role=tab]", $("#modalBody")), i = tabs.indexOf(tab);
+      i = e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      switchTab(tabs[i].getAttribute("data-tab")); tabs[i].focus();
+    });
+    var video = $(".hero-video"), motion = $("#motionToggle");
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var autoVideo = !reduced.matches && window.innerWidth > 600 && !(navigator.connection && navigator.connection.saveData);
+    if (autoVideo) { var source = $("source", video); source.src = source.dataset.src; video.load(); video.play().catch(function () {}); }
+    function pauseMotion(paused) {
+      document.body.classList.toggle("motion-paused", paused);
+      motion.setAttribute("aria-pressed", String(paused)); motion.textContent = paused ? "Reanudar animaciones" : "Pausar animaciones";
+      if (paused) video.pause(); else if (autoVideo) video.play().catch(function () {});
+    }
+    motion.addEventListener("click", function () { pauseMotion(!document.body.classList.contains("motion-paused")); });
+    reduced.addEventListener("change", function (e) { if (e.matches) pauseMotion(true); });
+
     // Filtros de docente y estado (delegación)
     $("#teacherFilters").addEventListener("click", function (e) {
       var b = e.target.closest("[data-teacher]");
@@ -613,6 +646,11 @@
     $("#modalBody").addEventListener("click", function (e) {
       var tab = e.target.closest("[data-tab]");
       if (tab) { switchTab(tab.getAttribute("data-tab")); return; }
+      if (e.target.closest("#moduleQuizRestart")) {
+        var module = byId(currentModuleId);
+        if (module) { setHTML($("#modalBody"), modalHTML(module)); switchTab("quiz"); $("#moduleQuizRestart").focus(); }
+        return;
+      }
       var doneBtn = e.target.closest("#modalDone");
       if (doneBtn) {
         if (currentModuleId) {
@@ -642,6 +680,7 @@
             var bestKey = STORE + ":quiz:" + m.id;
             var prev = parseInt(loadJSON(bestKey, 0), 10) || 0;
             if (pct > prev) saveJSON(bestKey, pct);
+            $(".module-best", $("#modalBody")).textContent = "Mejor puntaje de esta ficha: " + Math.max(prev, pct) + "%";
             if (pct > state.best) { state.best = pct; saveJSON(STORE + ":best", pct); renderStats(); }
             var box = document.querySelector('[data-quiz-result="' + m.id + '"]');
             if (box) {

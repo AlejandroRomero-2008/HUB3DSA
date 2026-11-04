@@ -1,0 +1,34 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Avalonia · eventos y municipios dependientes · Evidencia HUB 3DS·A</title><link rel="stylesheet" href="evidencia.css"></head><body><main><a href="../../index.html#modulo/avalonia">← Volver a la ficha</a><p>EVIDENCIA DEL PROYECTO ORIGINAL · REVISIÓN DEL 4 DE NOVIEMBRE DE 2026</p><h1>Avalonia · eventos y municipios dependientes</h1><p>Extracto real del formulario: inicialización, eventos de controles y selección de municipios según el departamento. El archivo también contiene validaciones adicionales.</p><h2>Extracto del archivo original</h2><pre><code>    public MainWindow()
+    {
+        InitializeComponent();
+
+        CargarDepartamentos();
+
+        // Eventos
+        txtNombre.TextChanged += TxtNombre_TextChanged;
+        dpNacimiento.PropertyChanged += DpNacimiento_PropertyChanged;
+        cmbDepartamento.SelectionChanged += CmbDepartamento_SelectionChanged;
+    }
+
+    // =========================
+    // Cargar departamentos
+    // =========================
+
+    private void CargarDepartamentos()
+    {
+        cmbDepartamento.ItemsSource = departamentos.Keys.ToList();
+    }
+
+    // =========================
+    // Departamento -&gt; Municipio
+    // =========================
+
+    private void CmbDepartamento_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (cmbDepartamento.SelectedItem is string departamento)
+        {
+            cmbMunicipio.ItemsSource = departamentos[departamento];
+        }
+    }
+
+</code></pre><h2>Procedencia</h2><p>Archivo dentro de la carpeta 3DSA proporcionada por el autor: <code>PROFE JAVIER/Modulo 3.4/SEMANA 3 DE AVALONIA/Ejercicio_6/Ejercicio_6/MainWindow.axaml.cs</code>.</p><p>Se presenta un extracto de lectura; no acredita ejecución, autoría de cada línea ni defensa individual. Los identificadores y las líneas de conexión se omiten cuando aparecen.</p><p>SHA-256 del archivo original: <code>111ea8b01876be476b7737927c4f58a65c6c98a60c0cb8d6095217a5fc467351</code></p></main></body></html>

@@ -6,7 +6,8 @@ Portal educativo estático para repasar los módulos del **3.º Bachillerato Té
 
 ## Estado
 
-- Versión de trabajo: **v0.5** · implementación del día 2; contenido y actividades individuales pendientes de verificar.
+- Estado: revisión técnica del día 3 (4 de noviembre de 2026). Funciones implementadas; cierre académico y evidencias pendientes. No se etiqueta v1.0 hasta completar los requisitos reales.
+- Auditoría contra la guía: [docs/revision-dia3.md](docs/revision-dia3.md).
 - Repositorio: https://github.com/AlejandroRomero-2008/HUB3DSA
 - GitHub Pages: https://alejandroromero-2008.github.io/HUB3DSA/
 - Autor de la base: **Josué Alejandro Romero Hernández** · [@AlejandroRomero-2008](https://github.com/AlejandroRomero-2008).
@@ -18,7 +19,7 @@ Portal educativo estático para repasar los módulos del **3.º Bachillerato Té
 
 ## Qué incluye
 
-- **17 módulos** con resumen, aprendizajes, instrumentos, programas, herramientas, recursos y quiz. Solo 7 módulos tienen imagen o enlace de evidencia adjunto; faltan evidencias reales en los otros 10.
+- **17 módulos** con resumen, aprendizajes, instrumentos, programas, herramientas, recursos y quiz. 16 módulos tienen imagen o enlace de evidencia adjunto; falta localizar el trabajo original de Cooperativas.
 - **Buscador y filtros** por docente, estado del repaso y tecnología.
 - **Progreso del repaso** guardado en `localStorage`.
 - **Quiz por módulo** y **quiz general** de 5 preguntas con retroalimentación inmediata.
@@ -28,14 +29,14 @@ Portal educativo estático para repasar los módulos del **3.º Bachillerato Té
 - **PWA instalable** (manifest + service worker).
 - Diseño responsive, navegación por teclado (`/` para buscar, `Esc` para cerrar) y textos alternativos en las imágenes.
 
-## Revisión técnica · 3 de noviembre de 2026
+## Revisión técnica actualizada · 4 de noviembre de 2026
 
 - 17 fichas con al menos 3 aprendizajes, 2 instrumentos, 2 programas, 2 herramientas, 3 recursos y 3 preguntas.
 - Búsqueda corregida para ignorar mayúsculas y acentos.
 - Progreso implementado con localStorage y porcentaje global.
 - Enlace público de Pages comprobado durante la revisión.
-- Pendientes: evidencias reales en 10 módulos, verificar recursos y contenidos contra las guías, revisión cruzada entre estudiantes y bitácoras personales.
-- No se certifican pruebas de Lighthouse ni pruebas manuales en celular en esta revisión.
+- Pendientes: evidencia real en Cooperativas, verificar recursos y contenidos contra las guías, revisión cruzada entre estudiantes y bitácoras personales.
+- Lighthouse local móvil: rendimiento 81, accesibilidad 100, mejores prácticas 100 y SEO 100. Se probaron tamaños móviles en Chrome; falta la prueba física en teléfono.
 
 ## Equipo y organización
 
@@ -142,42 +143,25 @@ Luego abre `http://localhost:8080`.
 
 > Para que el service worker y la instalación como app funcionen, tiene que servirse por HTTP/HTTPS, no con `file://`.
 
-## Cómo publicarlo en GitHub Pages
+## Publicación y versiones
 
-```bash
-git init
-git add .
-git commit -m "feat: portal HUB 3DS-A con módulos 2026"
-git branch -M main
-git remote add origin https://github.com/TU-USUARIO/hub-3dsa.git
-git push -u origin main
-```
+Repositorio del proyecto: [HUB3DSA](https://github.com/AlejandroRomero-2008/HUB3DSA).
+GitHub Pages sirve `main` / raíz. Los cambios se proponen en una rama y se integran por pull request.
+Las etiquetas v0.2, v0.5 y v1.0 deben corresponder a entregas reales; no se crean retrospectivamente para simular avances.
 
-En GitHub: **Settings → Pages → Source: Deploy from a branch → main → / (root) → Save**. Espera un par de minutos y abre la URL en una ventana de incógnito.
+## Funciones por nivel
 
-### Versiones sugeridas
+| Nivel | Funciones existentes |
+|---|---|
+| Base | Portada, navegación de escritorio y menú móvil, 17 fichas desde datos, diseño adaptable, enlaces al repositorio y Pages, equipo y registro de prompts. La evidencia de Cooperativas sigue pendiente. |
+| Pro | Buscador sin distinción de acentos, filtros, progreso persistente, 51 preguntas con explicación, quiz general y por módulo con mejor puntaje guardado, modo claro/oscuro persistente. |
+| Épico | Flashcards, línea de tiempo, nube interactiva, insignias y base PWA. No se certifica instalación en un teléfono real. |
 
-```bash
-git tag -a v0.2 -m "Cimientos: mapa, repo y módulos desde datos"
-git push origin v0.2
-# ... avance del día 2 ...
-git tag -a v0.5 -m "Contenido real, buscador y progreso"
-git push origin v0.5
-# ... cierre ...
-git tag -a v1.0 -m "Portal completo para la feria"
-git push origin v1.0
-```
+## Validación de esta revisión
 
-## Equipo y roles
+Pruebas en Chrome de escritorio con tamaños móviles de 320, 360, 375 y 390 px, tablet de 768 px y escritorio de 1280 px. Se comprueban búsqueda, menú, reintento y persistencia de puntajes. Esto no sustituye la prueba en un teléfono real.
 
-| Integrante | Carnet | Rol | Módulos |
-|-----------|--------|-----|---------|
-| Josué Alejandro Romero Hernández | 3381027 | Líder Git · Desarrollo · Contenido | Base del portal y módulos de los tres docentes |
-| _(integrante 2)_ | | Diseñador UI | Por asignar |
-| _(integrante 3)_ | | Curador de contenido | Por asignar |
-| _(integrante 4)_ | | QA y accesibilidad | Por asignar |
-
-> Edita `window.HUB.equipo` en `data/modulos.js` para completar el equipo. El portal muestra los espacios pendientes automáticamente.
+Resultados, enlaces y evidencias técnicas: [auditoría del día 3](docs/revision-dia3.md).
 
 ## Acuerdos de GitHub
 
@@ -189,14 +173,11 @@ git push origin v1.0
 - Etiquetas acordadas: `v0.2` (martes), `v0.5` (miércoles), `v1.0` (viernes).
 - GitHub Pages se publica desde `main` / raíz.
 
-## Bitácora
+## Historial de revisión
 
-| Fecha | Versión | Qué se hizo | Estado |
-|-------|---------|-------------|--------|
-| 2026-11-02 | v1.0 local | Base del portal, 17 fichas, diseño monocromático, buscador, progreso, quiz, flashcards, README y prompts. | Hecho |
-| 2026-11-03 | v0.2 | Revisión del equipo, nombres/roles, primer push y Pages activo. | Planificado |
-| 2026-11-04 | v0.5 | Ajustes de contenido, enlaces verificados, pruebas en celular y correcciones de QA. | Planificado |
-| 2026-11-06 | v1.0 | Cierre, etiqueta final, demo de 5 minutos y entrega del enlace. | Planificado |
+- Base recibida: 17 módulos y funciones del portal; existían pendientes documentados del día 2.
+- 4 de noviembre de 2026: revisión contra la guía del día 3, ajustes móviles y comprobaciones técnicas documentadas.
+- Entrega prevista por la guía: viernes 6 de noviembre. La fecha no acredita una entrega ni un ensayo realizado.
 
 ## Rúbrica · 10 puntos
 
@@ -214,6 +195,9 @@ El detalle está en [`PROMPTS.md`](PROMPTS.md). La regla del equipo: **la IA es 
 
 ## Créditos y evidencias
 
+Se incorporaron extractos de archivos reales de Python, Avalonia, Requerimientos, POO, ADO.NET, SportsPlay, MAUI y Linux, y se vinculó la captura existente de Ositos Studios a ASP.NET. Cada extracto incluye procedencia y SHA-256 del original en `docs/procedencia-evidencias.json`. Son muestras de lectura; no se afirma haber ejecutado los proyectos originales.
+
+
 Las capturas de `assets/evidencias/` provienen de los proyectos originales del autor:
 
 - `indel-web` (portafolio HTML/CSS).
@@ -228,10 +212,10 @@ Los recursos externos enlazados son documentación oficial o fuentes reconocidas
 
 ## Pendientes antes de la feria
 
-- [ ] Crear el repositorio público e invitar al equipo.
-- [ ] Completar nombres, roles y módulos de los integrantes.
-- [ ] Actualizar `window.HUB.enlaces.repo` y `pages` en `data/modulos.js`.
-- [ ] Verificar que todos los enlaces abran.
-- [ ] Probar en celular y en incógnito.
-- [ ] Etiquetar `v1.0`.
-- [ ] Preparar la demo de 5 minutos y la pregunta de dominio individual.
+- [ ] Adjuntar el trabajo real de Cooperativas; no se encontró en las carpetas proporcionadas.
+- [ ] Confirmar con las guías de clase el mapa, los instrumentos y la exactitud de los resúmenes.
+- [ ] Confirmar roles y reparto de módulos; completar bitácoras y autoevaluaciones individuales.
+- [ ] Realizar revisión cruzada, registrar/cerrar los Issues reales y ensayar defensas de 60 a 90 segundos por integrante.
+- [ ] Verificar los recursos bloqueados durante la comprobación automática.
+- [ ] Probar la URL pública en un teléfono real y en incógnito.
+- [ ] Tras completar lo anterior, publicar la etiqueta v1.0 y entregar ambas URL.

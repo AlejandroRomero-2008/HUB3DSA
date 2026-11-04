@@ -1,0 +1,12 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADO.NET · conexión de la práctica Películas · Evidencia HUB 3DS·A</title><link rel="stylesheet" href="evidencia.css"></head><body><main><a href="../../index.html#modulo/acceso-datos">← Volver a la ficha</a><p>EVIDENCIA DEL PROYECTO ORIGINAL · REVISIÓN DEL 4 DE NOVIEMBRE DE 2026</p><h1>ADO.NET · conexión de la práctica Películas</h1><p>Práctica real de acceso a datos con el proveedor OleDb de ADO.NET. Se muestra el cierre de conexión según su estado; la cadena de conexión no se publica. El proyecto original requiere revisar y parametrizar sus consultas antes de usarse con datos reales.</p><h2>Extracto del archivo original</h2><pre><code>using System.Data.OleDb;
+
+        public void cerrarConexion()
+        {
+            // Se chequea si está la conexión abierta
+            if (conBD.State == ConnectionState.Open)
+            {
+                // Se cierra la conexión
+                conBD.Close();
+            }
+        }
+</code></pre><h2>Procedencia</h2><p>Archivo dentro de la carpeta 3DSA proporcionada por el autor: <code>PROFE ARCIDES/Practica 3 A Acceso a datos/PELICULAS[identificador omitido]/PELICULAS[identificador omitido]/Form1.cs</code>.</p><p>Se presenta un extracto de lectura; no acredita ejecución, autoría de cada línea ni defensa individual. Los identificadores y las líneas de conexión se omiten cuando aparecen.</p><p>SHA-256 del archivo original: <code>33226ebd973bb89c6e0b0a2039c5131655842b436e8c8bba1fe226aab6b853e0</code></p></main></body></html>

@@ -1,0 +1,1 @@
+PASS: seis anchos (320,360,375,390,768,1280), menú, búsqueda, progreso, tema, teclado, 51 respuestas, reintento, persistencia de 17 puntajes, caché ajena intacta, sin conexión, sin errores JS.

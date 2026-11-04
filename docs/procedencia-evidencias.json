@@ -1,0 +1,66 @@
+[
+  {
+    "id": "python",
+    "nombre": "Ventana con CustomTkinter",
+    "detalle": "Práctica encontrada: creación de ventana, etiqueta, botón y actualización de texto mediante un evento.",
+    "url": "assets/evidencias/python.html",
+    "origen": "PROFE JAVIER/Modulo 3.4/Python/Mi primera ventana.py",
+    "sha256": "bfdb2d0eec20fe5fbabac6f276243c893530e093130d1a6688f44662bdf97a68"
+  },
+  {
+    "id": "avalonia",
+    "nombre": "Avalonia · eventos y municipios dependientes",
+    "detalle": "Extracto real del formulario: inicialización, eventos de controles y selección de municipios según el departamento. El archivo también contiene validaciones adicionales.",
+    "url": "assets/evidencias/avalonia.html",
+    "origen": "PROFE JAVIER/Modulo 3.4/SEMANA 3 DE AVALONIA/Ejercicio_6/Ejercicio_6/MainWindow.axaml.cs",
+    "sha256": "111ea8b01876be476b7737927c4f58a65c6c98a60c0cb8d6095217a5fc467351"
+  },
+  {
+    "id": "requerimientos",
+    "nombre": "Gym Big Strong · requerimientos funcionales y no funcionales",
+    "detalle": "Documento real del sistema de gimnasio: registro de clientes, pagos, asistencia, roles y requisitos de respuesta y seguridad.",
+    "url": "assets/evidencias/requerimientos.html",
+    "origen": "PROFE JAVIER/Modulo 3.4/Requerimientos Funcionales.docx",
+    "sha256": "8687c528c147837e2edf5eb8aa09e995fd46eaba9497d588367afc1445b9a2d1"
+  },
+  {
+    "id": "poo-csharp",
+    "nombre": "POO · venta al contado y herencia",
+    "detalle": "La clase Contado hereda de Venta y calcula descuentos según el subtotal. Es un extracto del caso desarrollado 5.",
+    "url": "assets/evidencias/poo-csharp.html",
+    "origen": "PROFE ARCIDES/Practica 02 POO Herencia y Polimorfismo/PRACTICA 2 POO C#/CASO_DESARROLLADO_5/CASO_DESARROLLADO_5/Contado.cs",
+    "sha256": "d6b572f6f0a7a054913bba21abd4418b3019ff3944407cbcdd412eae719b1823"
+  },
+  {
+    "id": "acceso-datos",
+    "nombre": "ADO.NET · conexión de la práctica Películas",
+    "detalle": "Práctica real de acceso a datos con el proveedor OleDb de ADO.NET. Se muestra el cierre de conexión según su estado; la cadena de conexión no se publica. El proyecto original requiere revisar y parametrizar sus consultas antes de usarse con datos reales.",
+    "url": "assets/evidencias/acceso-datos.html",
+    "origen": "PROFE ARCIDES/Practica 3 A Acceso a datos/PELICULAS[identificador omitido]/PELICULAS[identificador omitido]/Form1.cs",
+    "sha256": "33226ebd973bb89c6e0b0a2039c5131655842b436e8c8bba1fe226aab6b853e0"
+  },
+  {
+    "id": "crud-sqlserver",
+    "nombre": "SportsPlay · listado y controles de edición",
+    "detalle": "Extracto ASPX del proyecto SportsPlay: ListView enlazado a un origen de datos y controles para editar y eliminar registros. No se publican credenciales ni bases de datos.",
+    "url": "assets/evidencias/crud-sqlserver.html",
+    "origen": "PROFE ARCIDES/Practica 6/GRUD1_SportsPlay_[identificador omitido]/GRUD1_SportsPlay_[identificador omitido]/GRUD1.aspx",
+    "sha256": "e54a0cd59150abbe3c7da7c6c59d9b70600713c83a9b10adeee59b2eefc4a81e"
+  },
+  {
+    "id": "maui",
+    "nombre": "MAUI · cálculo de sueldo por horas",
+    "detalle": "Página móvil real que lee horas y pago por hora, calcula el sueldo y muestra el resultado con DisplayAlert.",
+    "url": "assets/evidencias/maui.html",
+    "origen": "PROFE ARCIDES/starfish/SueldoHoras[identificador omitido]/Sueldo.xaml.cs",
+    "sha256": "b67745957bc1726712ab113b952515e7e9f27a89fb4a13edf9a139bbfc4a0d48"
+  },
+  {
+    "id": "linux",
+    "nombre": "Manual de Linux · comandos básicos",
+    "detalle": "Extracto del manual entregado: ls, cd, pwd, cat y mkdir, con ejemplos. Se excluye la portada con información de estudiantes.",
+    "url": "assets/evidencias/linux.html",
+    "origen": "PROFE ARCIDES/Etapa de Informarse/Manual de Linux.docx",
+    "sha256": "a5c436250b7f6ad3043ec06a872544eb5c48357e87c591dc02d1820df37490fc"
+  }
+]

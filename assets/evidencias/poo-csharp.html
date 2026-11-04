@@ -1,0 +1,42 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>POO · venta al contado y herencia · Evidencia HUB 3DS·A</title><link rel="stylesheet" href="evidencia.css"></head><body><main><a href="../../index.html#modulo/poo-csharp">← Volver a la ficha</a><p>EVIDENCIA DEL PROYECTO ORIGINAL · REVISIÓN DEL 4 DE NOVIEMBRE DE 2026</p><h1>POO · venta al contado y herencia</h1><p>La clase Contado hereda de Venta y calcula descuentos según el subtotal. Es un extracto del caso desarrollado 5.</p><h2>Extracto del archivo original</h2><pre><code>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CASO_DESARROLLADO_5
+{
+    public class Contado : Venta
+    {
+        public static int n;
+        public Contado()
+        {
+
+            n++;
+        }
+        public int getN()
+        {
+
+            return n;
+        }
+
+
+        //Metodos de la clase contado
+        public double calculaDescuento(double subtotal)
+        {
+            if (subtotal &lt; 1000)
+                return 2.0 / 100 * subtotal;
+            else if (subtotal &gt;= 1000 &amp;&amp; subtotal &lt;= 3000)
+                return 5.0 / 100 * subtotal;
+            else
+
+                return 12.0 / 100 * subtotal;
+        }
+        public double calculaNeto(double subtotal, double descuento)
+        {
+            return subtotal - descuento;
+        }
+        
+    }
+}
+</code></pre><h2>Procedencia</h2><p>Archivo dentro de la carpeta 3DSA proporcionada por el autor: <code>PROFE ARCIDES/Practica 02 POO Herencia y Polimorfismo/PRACTICA 2 POO C#/CASO_DESARROLLADO_5/CASO_DESARROLLADO_5/Contado.cs</code>.</p><p>Se presenta un extracto de lectura; no acredita ejecución, autoría de cada línea ni defensa individual. Los identificadores y las líneas de conexión se omiten cuando aparecen.</p><p>SHA-256 del archivo original: <code>d6b572f6f0a7a054913bba21abd4418b3019ff3944407cbcdd412eae719b1823</code></p></main></body></html>

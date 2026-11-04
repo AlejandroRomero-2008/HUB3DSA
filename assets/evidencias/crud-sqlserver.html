@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SportsPlay · listado y controles de edición · Evidencia HUB 3DS·A</title><link rel="stylesheet" href="evidencia.css"></head><body><main><a href="../../index.html#modulo/crud-sqlserver">← Volver a la ficha</a><p>EVIDENCIA DEL PROYECTO ORIGINAL · REVISIÓN DEL 4 DE NOVIEMBRE DE 2026</p><h1>SportsPlay · listado y controles de edición</h1><p>Extracto ASPX del proyecto SportsPlay: ListView enlazado a un origen de datos y controles para editar y eliminar registros. No se publican credenciales ni bases de datos.</p><h2>Extracto del archivo original</h2><pre><code>            &lt;asp:ListView ID=&quot;ListView1&quot; runat=&quot;server&quot; DataKeyNames=&quot;Id&quot; DataSourceID=&quot;SqlDataSource1&quot; InsertItemPosition=&quot;LastItem&quot;&gt;
+                &lt;AlternatingItemTemplate&gt;
+                    &lt;span style=&quot;background-color: #FFFFFF;color: #284775;&quot;&gt;Id:
+                    &lt;asp:Label ID=&quot;IdLabel&quot; runat=&quot;server&quot; Text=&#x27;&lt;%# Eval(&quot;Id&quot;) %&gt;&#x27; /&gt;
+                    &lt;br /&gt;
+                    Nombre:
+                    &lt;asp:Label ID=&quot;NombreLabel&quot; runat=&quot;server&quot; Text=&#x27;&lt;%# Eval(&quot;Nombre&quot;) %&gt;&#x27; /&gt;
+                    &lt;br /&gt;
+                    Cargo:
+                    &lt;asp:Label ID=&quot;CargoLabel&quot; runat=&quot;server&quot; Text=&#x27;&lt;%# Eval(&quot;Cargo&quot;) %&gt;&#x27; /&gt;
+                    &lt;br /&gt;
+                    Sueldo:
+                    &lt;asp:Label ID=&quot;SueldoLabel&quot; runat=&quot;server&quot; Text=&#x27;&lt;%# Eval(&quot;Sueldo&quot;) %&gt;&#x27; /&gt;
+                    &lt;br /&gt;
+                    &lt;asp:Button ID=&quot;EditButton&quot; runat=&quot;server&quot; CommandName=&quot;Edit&quot; Text=&quot;Editar&quot; /&gt;
+                    &lt;asp:Button ID=&quot;DeleteButton&quot; runat=&quot;server&quot; CommandName=&quot;Delete&quot; Text=&quot;Eliminar&quot; /&gt;
+                    &lt;br /&gt;
+                    &lt;br /&gt;
+                    &lt;/span&gt;
+                &lt;/AlternatingItemTemplate&gt;</code></pre><h2>Procedencia</h2><p>Archivo dentro de la carpeta 3DSA proporcionada por el autor: <code>PROFE ARCIDES/Practica 6/GRUD1_SportsPlay_[identificador omitido]/GRUD1_SportsPlay_[identificador omitido]/GRUD1.aspx</code>.</p><p>Se presenta un extracto de lectura; no acredita ejecución, autoría de cada línea ni defensa individual. Los identificadores y las líneas de conexión se omiten cuando aparecen.</p><p>SHA-256 del archivo original: <code>e54a0cd59150abbe3c7da7c6c59d9b70600713c83a9b10adeee59b2eefc4a81e</code></p></main></body></html>

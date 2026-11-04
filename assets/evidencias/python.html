@@ -1,0 +1,20 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ventana con CustomTkinter · Evidencia HUB 3DS·A</title><link rel="stylesheet" href="evidencia.css"></head><body><main><a href="../../index.html#modulo/python">← Volver a la ficha</a><p>EVIDENCIA DEL PROYECTO ORIGINAL · REVISIÓN DEL 4 DE NOVIEMBRE DE 2026</p><h1>Ventana con CustomTkinter</h1><p>Práctica encontrada: creación de ventana, etiqueta, botón y actualización de texto mediante un evento.</p><h2>Extracto del archivo original</h2><pre><code>import customtkinter as ctk
+
+ctk.set_appearance_mode(&quot;dark&quot;)          # Modo oscuro automático
+ctk.set_default_color_theme(&quot;blue&quot;)      # Paleta de color
+
+ventana = ctk.CTk()
+ventana.title(&quot;App Moderna&quot;)
+ventana.geometry(&quot;400x300&quot;)
+
+etiqueta = ctk.CTkLabel(ventana,
+                        text=&quot;¡Diseño moderno! ✨&quot;,
+                        font=ctk.CTkFont(size=20, weight=&quot;bold&quot;))
+etiqueta.pack(pady=50)
+
+boton = ctk.CTkButton(ventana, text=&quot;Botón con estilo&quot;,
+                      command=lambda: etiqueta.configure(text=&quot;¡Increíble! 🔥&quot;))
+boton.pack()
+
+ventana.mainloop()
+</code></pre><h2>Procedencia</h2><p>Archivo dentro de la carpeta 3DSA proporcionada por el autor: <code>PROFE JAVIER/Modulo 3.4/Python/Mi primera ventana.py</code>.</p><p>Se presenta un extracto de lectura; no acredita ejecución, autoría de cada línea ni defensa individual. Los identificadores y las líneas de conexión se omiten cuando aparecen.</p><p>SHA-256 del archivo original: <code>bfdb2d0eec20fe5fbabac6f276243c893530e093130d1a6688f44662bdf97a68</code></p></main></body></html>
