@@ -1,5 +1,5 @@
 /* HUB 3DS·A — service worker mínimo para que el portal sea instalable */
-const CACHE = "hub3dsa-v13";
+const CACHE = "hub3dsa-v14";
 const ASSETS = [
   "./",
   "./index.html",

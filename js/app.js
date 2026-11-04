@@ -213,12 +213,12 @@
         '<span class="card-num" aria-hidden="true">' + esc(m.codigo ? m.codigo.replace("BTVDS ", "") : pad(m.n)) + "</span>" +
         '<span class="card-badge"><i></i>' + esc(teacherOf(m)) + " · " + esc(m.periodo) + "</span>" +
       "</div>" +
-      '<div class="card-body">' +
+      '<div class="card-body"><div class="card-copy" tabindex="0" role="region" aria-label="Contenido del módulo: ' + esc(m.titulo) + '">' +
         '<p class="module-code">' + esc(m.codigo || "") + '</p><h3>' + esc(m.titulo) + "</h3>" +
         "<p>" + esc(m.resumen) + "</p>" +
         '<p class="card-topics"><b>Temas:</b> ' + esc((m.temas || []).map(function (t) { return t.titulo; }).join(' · ') || 'Guía de repaso propuesta') + '</p>' +
         '<div class="card-tags">' + (m.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
-        '<div class="card-foot">' +
+        '</div><div class="card-foot">' +
           '<button class="card-open" type="button" data-open="' + esc(m.id) + '">Ver ficha <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>' +
           '<label class="check"><input type="checkbox" data-done="' + esc(m.id) + '"' + (done ? " checked" : "") + '><span>Repasado</span></label>' +
         "</div>" +
@@ -804,6 +804,12 @@
     renderFlash();
     renderCloud();
     renderTeam();
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('section-visible'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.05 });
+      $$('.section, .carousel-section').forEach(function (section) { section.classList.add('section-enter'); observer.observe(section); });
+    }
     bind();
 
     if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
