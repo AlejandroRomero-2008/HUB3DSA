@@ -64,7 +64,7 @@
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || ICONS.code) + "</svg>";
   }
   function teacherOf(m) { return m.docente || (HUB.docentes || []).filter(function (d) { return d.id === m.docenteId; }).map(function (d) { return d.nombre; })[0] || "Docente"; }
-  function byId(id) { return MODULOS.filter(function (m) { return m.id === id; })[0] || null; }
+  function byId(id) { var target = (window.MODULO_POR_TEMA || {})[id] || id; return MODULOS.filter(function (m) { return m.id === target; })[0] || null; }
   function isDone(id) { return !!state.progress[id]; }
   function doneCount() { return MODULOS.filter(function (m) { return isDone(m.id); }).length; }
   function moduleQuestions() {
@@ -98,8 +98,10 @@
     var active = document.activeElement;
     var keepFocus = active && active.matches && active.matches("[data-done]") &&
       active.closest(".card") && active.closest(".card").getAttribute("data-id") === id;
+    var current = byId(id);
     if (value) state.progress[id] = new Date().toISOString();
     else delete state.progress[id];
+    if (current) (current.temaIds || []).forEach(function (topicId) { if (value) state.progress[topicId] = state.progress[id]; else delete state.progress[topicId]; });
     saveProgress();
     renderCards();
     renderStats();
@@ -134,7 +136,7 @@
     var badges = [
       { label: "Primer paso", on: done >= 1 },
       { label: "5 módulos", on: done >= 5 },
-      { label: "10 módulos", on: done >= 10 },
+      { label: "9 módulos", on: total > 0 && done >= total },
       { label: "Año completo", on: total > 0 && done >= total },
       { label: "Quiz perfecto", on: state.best >= 100 }
     ];
@@ -182,7 +184,7 @@
     }
     if (state.q) {
       var hay = [
-        m.titulo, m.corto, m.resumen, teacherOf(m), m.periodo, m.tipo
+        m.codigo, m.titulo, m.corto, m.resumen, teacherOf(m), m.periodo, m.tipo, (m.temas || []).map(function (t) { return t.titulo + " " + t.resumen; }).join(" ")
       ].concat(m.tags || []).concat(m.herramientas || []).concat(m.programas || []).concat((m.instrumentos || []).map(function (i) { return i.nombre; }));
       var needle = normalizeSearch(state.q);
       if (!hay.some(function (v) { return normalizeSearch(v).indexOf(needle) !== -1; })) return false;
@@ -208,13 +210,14 @@
     return '<article class="card' + (done ? " done" : "") + '" data-id="' + esc(m.id) + '" style="animation-delay:' + Math.min(i * 24, 240) + 'ms">' +
       '<div class="card-art">' +
         '<span class="card-icon">' + icon(m.icono) + "</span>" +
-        '<span class="card-num" aria-hidden="true">' + pad(m.n) + "</span>" +
+        '<span class="card-num" aria-hidden="true">' + esc(m.codigo ? m.codigo.replace("BTVDS ", "") : pad(m.n)) + "</span>" +
         '<span class="card-badge"><i></i>' + esc(teacherOf(m)) + " · " + esc(m.periodo) + "</span>" +
       "</div>" +
       '<div class="card-body">' +
-        "<h3>" + esc(m.titulo) + "</h3>" +
+        '<p class="module-code">' + esc(m.codigo || "") + '</p><h3>' + esc(m.titulo) + "</h3>" +
         "<p>" + esc(m.resumen) + "</p>" +
-        '<div class="card-tags">' + (m.tags || []).slice(0, 4).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
+        '<p class="card-topics"><b>Temas:</b> ' + esc((m.temas || []).map(function (t) { return t.titulo; }).join(' · ') || 'Guía de repaso propuesta') + '</p>' +
+        '<div class="card-tags">' + (m.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
         '<div class="card-foot">' +
           '<button class="card-open" type="button" data-open="' + esc(m.id) + '">Ver ficha <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></button>' +
           '<label class="check"><input type="checkbox" data-done="' + esc(m.id) + '"' + (done ? " checked" : "") + '><span>Repasado</span></label>' +
@@ -252,9 +255,31 @@
     return (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">Abrir evidencia ↗</a>' : '<p class="evidence-pending">Pendiente de adjuntar archivo o enlace verificable.</p>') + '<div class="ev-file"><span class="ico">FILE</span><div><b>' + esc(e.nombre) + "</b><p>" + esc(e.detalle || "") + "</p></div></div>";
   }
 
+  function topicHTML(t) {
+    return '<details class="topic-detail" id="tema-' + esc(t.id) + '" data-topic="' + esc(t.id) + '"><summary>' + esc(t.titulo) + '</summary>' +
+      '<p>' + esc(t.resumen) + '</p><p><b>Repaso anterior:</b> ' + (state.progress[t.id] ? 'marcado como repasado' : 'sin marcar') + ' · mejor quiz del tema: ' + esc(loadJSON(STORE + ':quiz:' + t.id, 0)) + '%</p>' +
+      '<h4>Aprendizajes</h4><ul>' + (t.aprendizajes || []).map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>' +
+      '<h4>Instrumentos</h4><ul>' + (t.instrumentos || []).map(function (x) { return '<li><b>' + esc(x.nombre) + '</b> (' + esc(x.tipo) + '): ' + esc(x.detalle) + '</li>'; }).join('') + '</ul>' +
+      '<h4>Programas y herramientas</h4><p>' + esc((t.programas || []).concat(t.herramientas || []).join(' · ')) + '</p>' +
+      '<h4>Recursos</h4><div class="links">' + (t.recursos || []).map(function (r) { return '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.nombre) + ' ↗</a>'; }).join('') + '</div>' +
+      '<h4>Evidencias</h4><div class="evidence">' + (t.evidencias || []).map(evidenceHTML).join('') + '</div>' +
+      '<p>Sus ' + (t.quiz || []).length + ' preguntas con explicación están incluidas en la pestaña Quiz de este módulo.</p></details>';
+  }
+
+  function migrateCurriculumProgress() {
+    if (loadJSON(STORE + ':curriculo-v2', false)) return;
+    MODULOS.forEach(function (m) {
+      if (m.temaIds.length && m.temaIds.every(function (id) { return !!state.progress[id]; }) && !state.progress[m.id]) state.progress[m.id] = new Date().toISOString();
+      // Las marcas y los puntajes anteriores permanecen en sus claves originales.
+      // Un récord nuevo se gana con el quiz del módulo completo.
+    });
+    saveProgress(); saveJSON(STORE + ':curriculo-v2', true);
+  }
+
   function modalHTML(m) {
     var done = isDone(m.id);
     var resumen =
+      '<p class="curriculum-note">' + (m.propuesta ? 'Guía de repaso propuesta: faltan los materiales originales de clase.' : 'Los temas se agrupan por su relación con este módulo. Conservan los materiales del portal anterior; el equipo debe validar la correspondencia con sus guías.') + '</p>' +
       '<div class="ficha-grid">' +
         '<div>' +
           '<div class="ficha-block"><h3>Lo que aprendí</h3><ul>' + (m.aprendizajes || []).map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ul></div>" +
@@ -273,6 +298,9 @@
         "</div>" +
       "</div>";
 
+    resumen += '<section class="module-topics"><h3>Temas y proyectos de repaso</h3>' +
+      ((m.temas || []).length ? m.temas.map(topicHTML).join('') : '<p>La guía propuesta está en el resumen, la ficha completa y el quiz. Todavía no se ha adjuntado material original de este módulo.</p>') + '</section>';
+
     var ficha =
       '<div class="ficha-grid">' +
         '<div>' +
@@ -286,7 +314,7 @@
         '<div>' +
           '<div class="ficha-block"><h3>Programas</h3><div class="pills">' + (m.programas || []).map(function (p) { return '<span class="pill">' + esc(p) + "</span>"; }).join("") + "</div></div>" +
           '<div class="ficha-block"><h3>Herramientas</h3><div class="pills">' + (m.herramientas || []).map(function (h) { return '<span class="pill">' + esc(h) + "</span>"; }).join("") + "</div></div>" +
-          '<div class="ficha-block"><h3>Evidencias</h3><div class="evidence">' + (m.evidencias || []).map(evidenceHTML).join("") + "</div></div>" +
+          '<div class="ficha-block"><h3>Evidencias</h3><div class="evidence">' + ((m.evidencias || []).length ? m.evidencias.map(evidenceHTML).join("") : '<p>Pendiente de adjuntar evidencia real de clase.</p>') + "</div></div>" +
         "</div>" +
       "</div>";
 
@@ -305,7 +333,7 @@
       '<div class="quiz-summary" role="status" data-quiz-result="' + esc(m.id) + '"></div>';
 
     return '<div class="modal-hero">' +
-        '<div class="modal-kicker"><span>Módulo ' + pad(m.n) + '</span><span class="pill">' + esc(teacherOf(m)) + '</span><span>' + esc(m.periodo) + '</span><span class="pill">' + esc(m.tipo) + '</span></div>' +
+        '<div class="modal-kicker"><span>' + esc(m.codigo || ('Módulo ' + pad(m.n))) + '</span><span class="pill">' + esc(teacherOf(m)) + '</span><span>' + esc(m.periodo) + '</span><span class="pill">' + esc(m.tipo) + '</span></div>' +
         '<h2 id="modalTitle">' + esc(m.titulo) + "</h2>" +
         "<p>" + esc(m.resumen) + "</p>" +
         '<div class="modal-actions">' +
@@ -327,9 +355,9 @@
   function openModal(id) {
     var m = byId(id);
     if (!m) return;
-    currentModuleId = id;
+    currentModuleId = m.id;
     lastFocus = document.activeElement;
-    try { history.replaceState(null, "", "#modulo/" + id); } catch (e) { /* file:// */ }
+    try { history.replaceState(null, "", "#modulo/" + m.id); } catch (e) { /* file:// */ }
     setHTML($("#modalBody"), modalHTML(m));
     var modal = $("#modal");
     modal.hidden = false;
@@ -339,6 +367,8 @@
     // Reinicia el estado del quiz de la ficha
     var quizRoot = $('[data-quiz="' + m.id + '"]');
     if (quizRoot) quizRoot._answered = 0;
+    var topic = document.getElementById('tema-' + id);
+    if (topic) { topic.open = true; topic.scrollIntoView({ block: 'start' }); }
   }
   function closeModal() {
     var modal = $("#modal");
@@ -489,7 +519,7 @@
     var order = Object.keys(groups).map(Number).sort(function (a, b) { return a - b; });
     setHTML($("#timeline"), order.map(function (mes) {
       var list = groups[mes].sort(function (a, b) { return a.n - b.n; });
-      return '<div class="tl-month"><div class="tl-label"><b>' + esc(MONTHS[mes] || "2026") + '</b><span>' + list.length + (list.length === 1 ? " módulo" : " módulos") + "</span></div><div class=\"tl-items\">" +
+      return '<div class="tl-month"><div class="tl-label"><b>' + esc(mes === 0 ? "Módulos oficiales" : (MONTHS[mes] || "2026")) + '</b><span>' + list.length + (list.length === 1 ? " módulo" : " módulos") + "</span></div><div class=\"tl-items\">" +
         list.map(function (m) {
           return '<button class="tl-item' + (isDone(m.id) ? " done" : "") + '" type="button" data-id="' + esc(m.id) + '"><span class="n">' + pad(m.n) + '</span><span class="t">' + esc(m.titulo) + '</span><span class="who">' + esc(teacherOf(m).split(" ")[0]) + "</span></button>";
         }).join("") +
@@ -560,7 +590,14 @@
     var video = $(".hero-video"), motion = $("#motionToggle");
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     var autoVideo = !reduced.matches && window.innerWidth > 600 && !(navigator.connection && navigator.connection.saveData);
-    if (autoVideo) { var source = $("source", video); source.src = source.dataset.src; video.load(); video.play().catch(function () {}); }
+    function playVideo() { var source = $("source", video); if (!source.getAttribute("src")) { source.src = source.dataset.src; video.load(); } video.play().catch(function () { toast("Usa el botón para reproducir el fondo cuando tu navegador lo permita."); }); }
+    video.addEventListener("play", function () { $("#videoToggle").textContent = "Pausar video de fondo"; });
+    video.addEventListener("pause", function () { $("#videoToggle").textContent = "Reproducir video de fondo"; });
+    if (autoVideo) playVideo();
+    $("#videoToggle").addEventListener("click", function () {
+      if (video.paused) { video.classList.add("user-playback"); playVideo(); this.textContent = "Pausar video de fondo"; }
+      else { video.pause(); this.textContent = "Reproducir video de fondo"; }
+    });
     function pauseMotion(paused) {
       document.body.classList.toggle("motion-paused", paused);
       motion.setAttribute("aria-pressed", String(paused)); motion.textContent = paused ? "Reanudar animaciones" : "Pausar animaciones";
@@ -755,6 +792,7 @@
       toast("No se cargaron los módulos. Revisa data/modulos.js");
       return;
     }
+    migrateCurriculumProgress();
     var theme = document.documentElement.getAttribute("data-theme") || "dark";
     setTheme(theme);
     renderStats();

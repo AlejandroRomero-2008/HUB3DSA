@@ -1236,3 +1236,33 @@ body.motion-paused .ticker-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { #motionToggle { display: none; } }
 
 .chip .count, .cloud .count { opacity: 1; }
+
+/* Una tarjeta por módulo oficial; sin recortes de texto según el dispositivo. */
+.module-code { font-family: var(--mono); font-weight: 700; letter-spacing: .08em; color: var(--ink) !important; }
+.card-body p { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.card-topics { font-size: 12.5px; }
+.card-badge { right: 12px; flex-wrap: wrap; overflow-wrap: anywhere; }
+.card-num { font-size: 4.4rem; }
+.tl-item .n { min-width: 3ch; }
+.curriculum-note { border-left: 3px solid var(--line-strong); padding: 10px 14px; color: var(--muted); }
+.module-topics { margin-top: 22px; }
+.topic-detail { border: 1px solid var(--line-strong); border-radius: 12px; padding: 14px; margin-bottom: 12px; overflow-wrap: anywhere; }
+.topic-detail summary { font-size: 16px; font-weight: 700; cursor: pointer; min-height: 44px; }
+.topic-detail h4 { margin: 18px 0 8px; font-size: 14px; }
+.topic-detail ul { padding-left: 20px; }
+.topic-detail p, .topic-detail li { font-size: 14px; }
+.topic-detail .links, .topic-detail .evidence { min-width: 0; }
+.brand-text small { display: block; }
+@media (max-width: 600px) {
+  .brand-text small { display: block; font-size: 8px; }
+  .topbar-inner { gap: 6px; }
+  .brand { gap: 6px; }
+  .icon-btn { min-width: 40px; width: 40px; }
+  .card-art { height: 138px; }
+  .card-badge { font-size: 9px; letter-spacing: .04em; }
+  .tab-panel { min-width: 0; }
+  .ficha-grid { grid-template-columns: minmax(0, 1fr); }
+  .modal-hero { padding-right: 56px; }
+}
+
+.hero-video.user-playback { display: block; }

@@ -1,7 +1,7 @@
 /* ============================================================
    HUB 3DS·A — Datos del repaso 2026
-   Todo el contenido del portal vive aquí. Para agregar un módulo,
-   copia un objeto, cámbiale el id y aparecerá solo en la página.
+   Todo el contenido del portal vive aquí. TEMAS conserva el repaso;
+   CURRICULO define las tarjetas oficiales y su relación con los temas.
    ============================================================ */
 
 window.HUB = {
@@ -13,7 +13,7 @@ window.HUB = {
   autor: "Josué Alejandro Romero Hernández",
   docentes: [
     { id: "javier", nombre: "Javier Mineros", completo: "Javier Arturo García Mineros" },
-    { id: "arcides", nombre: "Arcides Canales", completo: "Arcides Canales" },
+    { id: "arcides", nombre: "Arcides Canales", completo: "Francisco Arcides Canales Sorto" },
     { id: "julio", nombre: "Profe Julio", completo: "Profesor Julio" }
   ],
   equipo: [
@@ -42,7 +42,7 @@ window.HUB = {
   }
 };
 
-window.MODULOS = [
+window.TEMAS = [
   {
     id: "web-html-css-js",
     n: 1,
@@ -752,6 +752,67 @@ window.MODULOS = [
     tags: ["Cooperativas", "Investigación", "Exposición", "Economía social"]
   }
 ];
+
+/* Mapa curricular: nombres de la jornada 2026 aportados por el estudiante.
+   Los 17 registros anteriores son TEMAS; se conservan íntegros como material de repaso.
+   La relación tema/módulo es una organización temática del portal, no un acta de clase. */
+window.CURRICULO = [
+  { id: "btvds-3-0", codigo: "BTVDS 3.0", titulo: "Orientación al estudiante al proceso educativo", docenteId: "julio", icono: "users", temas: [], resumen: "Organización del año, acuerdos de trabajo, diagnóstico y planificación del aprendizaje. Esta ficha contiene una guía de repaso propuesta; falta adjuntar los materiales originales de clase." },
+  { id: "btvds-3-1", codigo: "BTVDS 3.1", titulo: "Desarrollo de aplicaciones de software para la solución de problemas", docenteId: "arcides", icono: "code", temas: ["web-html-css-js", "php-mvc", "python", "escritorio-csharp", "avalonia", "poo-csharp", "acceso-datos", "aspnet", "crud-sqlserver"], resumen: "Programación y construcción de aplicaciones para resolver problemas: desarrollo web, escritorio, orientación a objetos, acceso a datos y operaciones CRUD. Los lenguajes y proyectos se consultan como temas dentro de este módulo." },
+  { id: "btvds-3-2", codigo: "BTVDS 3.2", titulo: "Mantenimiento y aseguramiento de la operación del sistema informático", docenteId: "arcides", icono: "terminal", temas: ["linux"], resumen: "Operación y cuidado del entorno informático: uso de Linux y terminal, permisos, procesos y comprobación del sistema. El manual de Linux se conserva como tema y evidencia de apoyo al mantenimiento." },
+  { id: "btvds-3-3", codigo: "BTVDS 3.3", titulo: "Administración de base de datos", docenteId: "javier", icono: "database", temas: ["mysql", "sqlserver", "access"], resumen: "Administración de datos con MySQL, SQL Server y Access: consultas, relaciones, respaldo, restauración y migración. Cada gestor aparece como tema del módulo, con sus prácticas y recursos." },
+  { id: "btvds-3-4", codigo: "BTVDS 3.4", titulo: "Elaboración de documentación de sistemas informáticos", docenteId: "javier", icono: "clipboard", temas: ["requerimientos"], resumen: "Documentación del sistema Gym Big Strong: entrevista, requerimientos funcionales y no funcionales, modelo de datos y acuerdo de nivel de servicio. Los documentos se organizan dentro del módulo oficial." },
+  { id: "btvds-3-5", codigo: "BTVDS 3.5", titulo: "Desarrollo de componentes para dispositivos móviles", docenteId: "arcides", icono: "phone", temas: ["maui"], resumen: "Componentes e interfaces móviles con .NET MAUI: XAML, navegación, eventos, enlaces de datos y ejercicios de cálculo. MAUI es una tecnología del módulo, no el nombre del módulo." },
+  { id: "btvds-3-6", codigo: "BTVDS 3.6", titulo: "Conversación de inglés sobre mantenimiento de sistemas informáticos", docenteId: "javier", icono: "globe", temas: [], resumen: "Repaso propuesto de vocabulario y conversaciones en inglés para describir fallas, solicitar información y explicar tareas de mantenimiento. Falta adjuntar las actividades originales de clase." },
+  { id: "btvds-3-7", codigo: "BTVDS 3.7", titulo: "Puesta en marcha de la microempresa en asociatividad cooperativa", docenteId: "julio", icono: "users", temas: ["cooperativas"], resumen: "Organización de una microempresa bajo principios cooperativos: participación, decisiones democráticas, servicios y aportes a la comunidad. La exposición sobre cooperativas queda como tema; su evidencia original sigue pendiente." },
+  { id: "btvds-3-8", codigo: "BTVDS 3.8", titulo: "Proyecto innovador de desarrollo de software", docenteId: "javier", icono: "briefcase", temas: ["ositos-studios"], resumen: "Integración de análisis, diseño, programación, datos y documentación en un proyecto de software. Ositos Studios se conserva como proyecto y evidencia dentro de esta ficha." }
+];
+(function () {
+  var extra = {
+    "btvds-3-0": {
+      aprendizajes: ["Reconocer los módulos oficiales y distinguirlos de sus temas.", "Organizar responsabilidades y metas de aprendizaje verificables.", "Registrar avances, dificultades y uso de IA con honestidad."],
+      instrumentos: [{ nombre: "Plan personal de repaso", tipo: "Propuesta de estudio", detalle: "Definir metas, módulos a reforzar y una fecha para revisar el avance." }, { nombre: "Lista de cotejo del equipo", tipo: "Propuesta de estudio", detalle: "Comprobar acuerdos, tareas, revisión y entrega de evidencias." }],
+      programas: ["Navegador web", "Editor de texto"], herramientas: ["Planificación", "Bitácora", "GitHub"], tags: ["Orientación", "Organización", "Trabajo en equipo"],
+      recursos: [{ nombre: "Organización del equipo del portal", url: "docs/reparto-modulos.md" }, { nombre: "README del proyecto", url: "README.md" }, { nombre: "Registro de uso de IA", url: "PROMPTS.md" }], evidencias: [],
+      quiz: [
+        { p: "¿Qué conviene hacer antes de repartir tareas?", opciones: ["Identificar objetivos y responsabilidades", "Elegir tareas sin hablar con el equipo", "Copiar una entrega anterior"], correcta: 0, explica: "Un objetivo compartido y responsabilidades claras permiten organizar el trabajo." },
+        { p: "¿Qué diferencia un módulo de un tema?", opciones: ["Son siempre la misma cosa", "El módulo reúne aprendizajes y puede incluir varios temas", "Un tema tiene obligatoriamente un código curricular"], correcta: 1, explica: "Por ejemplo, MySQL y SQL Server son temas dentro de Administración de base de datos." },
+        { p: "¿Qué debe reflejar una bitácora personal?", opciones: ["Actividades inventadas", "Solo el trabajo de los compañeros", "Lo que hice, aprendí y necesito mejorar"], correcta: 2, explica: "La bitácora registra la experiencia real del estudiante y sus próximos pasos." }
+      ]
+    },
+    "btvds-3-6": {
+      aprendizajes: ["Preguntar por una falla: What seems to be the problem?", "Explicar una acción: Please restart the computer.", "Distinguir restart (reiniciar), backup (copia de seguridad) y update (actualización)."],
+      instrumentos: [{ nombre: "Diálogo de soporte técnico", tipo: "Propuesta de estudio", detalle: "Practicar por parejas cómo preguntar por síntomas y explicar una solución." }, { nombre: "Lista de vocabulario", tipo: "Propuesta de estudio", detalle: "Repasar restart, backup, update, hardware, software y troubleshooting." }],
+      programas: ["Navegador web", "Grabadora de voz"], herramientas: ["Inglés técnico", "Conversación", "Vocabulario de mantenimiento"], tags: ["Inglés", "Mantenimiento", "Conversación"],
+      recursos: [{ nombre: "Microsoft Learn en inglés", url: "https://learn.microsoft.com/en-us/" }, { nombre: "Documentación de Ubuntu en inglés", url: "https://help.ubuntu.com/" }, { nombre: "MDN: glosario técnico en inglés", url: "https://developer.mozilla.org/en-US/docs/Glossary" }], evidencias: [],
+      quiz: [
+        { p: "¿Qué significa Please restart the computer?", opciones: ["Borra todos los archivos", "Por favor, reinicia la computadora", "Compra otra computadora"], correcta: 1, explica: "Restart significa reiniciar; la frase es una instrucción cortés de soporte." },
+        { p: "¿Qué pregunta sirve para conocer una falla?", opciones: ["What seems to be the problem?", "What is your favorite color?", "How much is the chair?"], correcta: 0, explica: "La primera pregunta pide describir el problema del equipo." },
+        { p: "¿Cómo se dice copia de seguridad en inglés técnico?", opciones: ["Keyboard", "Screen", "Backup"], correcta: 2, explica: "Backup es una copia de seguridad; keyboard es teclado y screen es pantalla." }
+      ]
+    }
+  };
+  function unique(items) {
+    var seen = {};
+    return items.filter(function (x) { var k = typeof x === "string" ? x : JSON.stringify(x); if (seen[k]) return false; seen[k] = true; return true; });
+  }
+  var themes = {};
+  window.TEMAS.forEach(function (t) { themes[t.id] = t; });
+  window.MODULO_POR_TEMA = {};
+  window.MODULOS = window.CURRICULO.map(function (c, i) {
+    var teacher = window.HUB.docentes.filter(function (d) { return d.id === c.docenteId; })[0];
+    var list = c.temas.map(function (id) {
+      if (!themes[id]) throw new Error("Tema sin localizar: " + id);
+      window.MODULO_POR_TEMA[id] = c.id;
+      return themes[id];
+    });
+    var m = { id: c.id, n: i, codigo: c.codigo, titulo: c.titulo, corto: c.resumen, resumen: c.resumen, docenteId: c.docenteId, docente: teacher.nombre, periodo: "Año lectivo 2026", mes: 0, tipo: "Módulo curricular", icono: c.icono, temas: list, temaIds: c.temas.slice(), propuesta: !!extra[c.id] };
+    ["aprendizajes", "instrumentos", "programas", "herramientas", "recursos", "evidencias", "quiz", "tags"].forEach(function (key) {
+      m[key] = unique(list.reduce(function (a, t) { return a.concat(t[key] || []); }, []).concat(extra[c.id] && extra[c.id][key] || []));
+    });
+    return m;
+  });
+})();
 
 window.FLASHCARDS = [
   { frente: "¿Qué diferencia hay entre HTML, CSS y JavaScript?", reverso: "HTML estructura, CSS presenta y JavaScript da comportamiento." },

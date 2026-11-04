@@ -1,0 +1,1 @@
+PASS: 9 tarjetas, 17 temas conservados, 57 preguntas; docentes 4/3/2; búsqueda; anchos 320,360,375,390,600,768,900,1280,1920; secciones conservadas; enlaces anteriores; progreso y puntajes anteriores conservados; sin errores JS.

@@ -23,7 +23,7 @@
       } catch (e) { /* sin almacenamiento: se queda en oscuro */ }
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=20261104.1">
+  <link rel="stylesheet" href="css/styles.css?v=20261104.2">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -64,7 +64,7 @@
       <div class="wrap hero-inner">
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span> INDEL · 3.º DS «A» · 2026</p>
         <h1>Todo el año.<br><span class="outline">Un solo lugar.</span></h1>
-        <p class="lead">Un HUB para volver sobre lo aprendido: los módulos de Javier, Arcides y Julio, sus programas, herramientas, instrumentos y evidencias. Sin releer de memoria: recordando, explicando y jugando.</p>
+        <p class="lead">Un HUB para volver sobre lo aprendido: los nueve módulos oficiales de Javier, Arcides y Julio, con sus temas, programas, herramientas, instrumentos y evidencias. Sin releer de memoria: recordando, explicando y jugando.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="#modulos">
             Explorar los módulos
@@ -76,6 +76,7 @@
           </button>
         </div>
         <button class="btn btn-ghost btn-sm" id="motionToggle" type="button" aria-pressed="false">Pausar animaciones</button>
+        <button class="btn btn-ghost btn-sm" id="videoToggle" type="button">Reproducir video de fondo</button>
         <div class="hero-stats" aria-label="Resumen del portal">
           <div class="stat"><b id="statMods">0</b><span>módulos</span></div>
           <div class="stat"><b id="statTeachers">0</b><span>docentes</span></div>
@@ -109,9 +110,9 @@
         <div class="section-head">
           <div>
             <p class="kicker">01 · Mapa del año</p>
-            <h2>Todos los módulos,<br>en un solo index.</h2>
+            <h2>Los nueve módulos,<br>por su nombre oficial.</h2>
           </div>
-          <p class="section-note">Filtra por docente, busca una herramienta o marca lo que ya repasaste. <b>Cada ficha se abre con su resumen, instrumentos, programas, recursos, evidencias y quiz.</b></p>
+          <p class="section-note">Cada tarjeta corresponde a un módulo BTVDS, no a una tecnología. Filtra por docente, código o tema y marca lo que ya repasaste. <b>Cada ficha se abre con su resumen, instrumentos, programas, recursos, evidencias y quiz.</b></p>
         </div>
 
         <div class="toolbar">
@@ -141,9 +142,9 @@
         <div class="section-head">
           <div>
             <p class="kicker">02 · Ruta del año</p>
-            <h2>El año,<br>en orden.</h2>
+            <h2>La ruta,<br>por módulo.</h2>
           </div>
-          <p class="section-note">Una línea de tiempo con los hitos de 2026. Haz clic en cualquier hito para abrir su ficha. <b>Lo que no está en el mapa, se pierde; lo que está, se puede repasar.</b></p>
+          <p class="section-note">Los módulos se muestran por su código curricular. Abre cada ficha para consultar los temas y trabajos que le corresponden.</p>
         </div>
         <div class="timeline" id="timeline"></div>
       </div>
@@ -304,8 +305,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data/modulos.js?v=20261104.1"></script>
-  <script src="js/app.js?v=20261104.1"></script>
-  <script src="js/carousel.js?v=20261104.1"></script>
+  <script src="data/modulos.js?v=20261104.2"></script>
+  <script src="js/app.js?v=20261104.2"></script>
+  <script src="js/carousel.js?v=20261104.2"></script>
 </body>
 </html>

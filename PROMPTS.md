@@ -95,3 +95,12 @@ Se solicitó proponer roles y bitácoras. Se prepararon roles y repartos propues
 - **Límite:** no se inventaron evidencias de clase ni declaraciones personales del equipo. El registro anterior se conserva como historial declarado por el proyecto; esta revisión no acredita esas sesiones anteriores.
 
 - **Contexto adicional del usuario:** indicó las carpetas `3DSA` y `C:\xampp\htdocs` para localizar evidencias. Se incorporaron extractos de archivos originales a nueve fichas pendientes; Cooperativas no pudo verificarse.
+
+
+## Corrección curricular · 4 de noviembre de 2026
+
+- **Solicitud:** cambiar las tarjetas para que muestren los nombres de los módulos oficiales y agrupar cada tema en su módulo; conservar el contenido en todos los dispositivos y publicar los cambios.
+- **Fuentes:** dos fotografías de la jornalización 2026; captura de Classroom de Arcides con 3.1, 3.2 y 3.5; confirmación escrita del estudiante de que Julio imparte 3.0 y 3.7.
+- **Corrección:** la versión previa confundió 17 temas/tecnologías con módulos curriculares. Ahora hay nueve fichas principales y se preservan los 17 temas dentro de ellas. Javier: 3.3, 3.4, 3.6 y 3.8. Arcides: 3.1, 3.2 y 3.5. Julio: 3.0 y 3.7.
+- **Límites:** no se pudo consultar Classroom mediante la herramienta. No se almacenaron credenciales. La ubicación de prácticas es una organización temática pendiente de validación con las guías del equipo. Los contenidos nuevos de Orientación e Inglés son repaso propuesto, no evidencias de actividades realizadas.
+- **Verificación:** comparación íntegra de los 17 temas con la versión anterior, pruebas de nueve anchos de pantalla, búsqueda, filtros por docente, enlaces anteriores, progreso y puntajes conservados, y quizzes de los nueve módulos.

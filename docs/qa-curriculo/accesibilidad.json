@@ -1,0 +1,42 @@
+[
+  {
+    "theme": "dark",
+    "mode": "portada",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "mode": "resumen",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "mode": "ficha",
+    "violations": []
+  },
+  {
+    "theme": "dark",
+    "mode": "quiz",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "mode": "portada",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "mode": "resumen",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "mode": "ficha",
+    "violations": []
+  },
+  {
+    "theme": "light",
+    "mode": "quiz",
+    "violations": []
+  }
+]
