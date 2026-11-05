@@ -1333,7 +1333,7 @@ main { animation: pageEnter .35s ease-out; }
     place-items: center;
     background: #050505;
     pointer-events: none;
-    animation: welcome-intro-out 7.5s linear both;
+    animation: welcome-intro-out 6.5s linear both;
   }
   .welcome-intro img { width: 100%; height: 100%; object-fit: contain; }
 }
