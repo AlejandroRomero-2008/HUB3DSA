@@ -523,9 +523,8 @@
       return '<li class="route-step" style="--step-delay:' + (i * 95) + 'ms">' +
         '<span class="route-medallion" aria-hidden="true">' + icon(m.icono) + '</span>' +
         '<button class="route-capsule' + (isDone(m.id) ? ' done' : '') + '" type="button" data-id="' + esc(m.id) +
-        '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '">' +
-        '<span class="route-code">' + esc(m.codigo.replace('BTVDS ', '')) + '</span>' +
-        '<span class="route-title">' + esc(m.titulo) + '</span></button></li>';
+        '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '" title="' + esc(m.titulo) + '">' +
+        '<span class="route-code">' + esc(m.codigo.replace('BTVDS ', '')) + '</span></button></li>';
     }).join('');
     setHTML($("#timeline"), '<div class="route-relief">' +
       '<svg class="route-curve" viewBox="0 0 100 ' + (modules.length * 100) + '" preserveAspectRatio="none" aria-hidden="true">' +

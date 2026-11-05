@@ -616,11 +616,11 @@ h2 {
 .route-heading h2 { font-size: clamp(2.25rem, 6vw, 4.25rem); margin: 0 0 18px; line-height: 1.05; }
 .route-heading .section-note { margin-inline: auto; }
 .route-relief {
-  --route-axis: clamp(76px, 15vw, 116px);
-  --route-row: 108px;
+  --route-axis: clamp(98px, 20vw, 144px);
+  --route-row: 116px;
   --route-gap: clamp(6px, 2vw, 22px);
   position: relative;
-  max-width: 900px;
+  max-width: 580px;
   margin: 0 auto;
   isolation: isolate;
 }
@@ -635,7 +635,7 @@ h2 {
   justify-self: center;
   display: grid;
   place-items: center;
-  width: clamp(52px, 8vw, 68px);
+  width: clamp(62px, 12vw, 88px);
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
@@ -643,16 +643,16 @@ h2 {
   background: radial-gradient(circle at 32% 24%, var(--panel-3), transparent 65%), var(--bg-elev);
   box-shadow: inset 0 0 0 4px var(--panel), inset 0 -5px 8px rgba(0,0,0,.12), 0 8px 14px rgba(0,0,0,.27);
 }
-.route-medallion svg { width: 26px; height: 26px; }
+.route-medallion svg { width: clamp(25px, 4.5vw, 35px); height: clamp(25px, 4.5vw, 35px); }
 .route-capsule {
   grid-area: 1 / 3;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   min-width: 0;
-  width: 100%;
-  min-height: 56px;
+  width: min(100%, 144px);
+  min-height: 52px;
   padding: 9px 15px;
   border: 1px solid var(--line-strong);
   border-radius: 28px;
@@ -663,16 +663,15 @@ h2 {
   cursor: pointer;
   transition: transform .2s ease, border-color .2s ease;
 }
-.route-step:nth-child(even) .route-capsule { grid-column: 1; flex-direction: row-reverse; text-align: right; }
+.route-step:nth-child(even) .route-capsule { grid-column: 1; justify-self: end; }
 .route-capsule::before { content: ""; position: absolute; top: calc(50% - 4px); left: -5px; width: 8px; height: 8px; rotate: 45deg; background: var(--bg-elev); border: solid var(--line-strong); border-width: 0 0 1px 1px; }
 .route-step:nth-child(even) .route-capsule::before { left: auto; right: -5px; rotate: 225deg; }
 .route-code { font: 700 clamp(17px, 3vw, 26px) var(--mono); color: var(--ink-soft); }
-.route-title { font: 600 clamp(11px, 1.5vw, 14px)/1.25 var(--body); overflow-wrap: anywhere; }
 .route-capsule.done .route-code::after { content: " ✓"; font-size: .6em; }
 .route-capsule:hover, .route-capsule:focus-visible { transform: translateY(-3px); border-color: var(--ink); }
 @media (max-width: 540px) {
-  .route-relief { --route-row: 128px; }
-  .route-capsule, .route-step:nth-child(even) .route-capsule { flex-direction: column; align-items: flex-start; gap: 4px; padding: 7px; border-radius: 16px; text-align: left; }
+  .route-relief { --route-row: 94px; }
+  .route-capsule, .route-step:nth-child(even) .route-capsule { min-height: 44px; padding: 6px; border-radius: 22px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   #ruta.section-visible .route-curve path { stroke-dasharray: 1; animation: route-draw 1.2s ease-out both; }
