@@ -513,33 +513,25 @@
   }
 
   /* ------------------------------ timeline ------------------------------ */
-  function ribbonMarkup(items) {
-    return '<ol class="route-ribbon" aria-label="Módulos oficiales">' + items.map(function (item, i) {
-      var face = 'ribbon-face-' + i;
-      var fold = 'ribbon-fold-' + i;
-      return '<li class="ribbon-step" style="--ribbon-delay:' + (i * 95) + 'ms">' +
-        '<svg class="ribbon-art" viewBox="0 0 440 150" aria-hidden="true" focusable="false">' +
-        '<defs><linearGradient id="' + face + '" x1="0%" y1="0%" x2="100%" y2="85%">' +
-        '<stop offset="0" stop-color="#393939"/><stop offset=".42" stop-color="#929292"/>' +
-        '<stop offset=".73" stop-color="#e3e3e3"/><stop offset="1" stop-color="#555"/>' +
-        '</linearGradient><linearGradient id="' + fold + '" x2="0%" y2="100%">' +
-        '<stop offset="0" stop-color="#111"/><stop offset="1" stop-color="#777"/>' +
-        '</linearGradient></defs>' +
-        '<path fill="url(#' + fold + ')" d="M220 0C282 3 358 24 384 57L332 83C305 55 265 45 220 43Z"/>' +
-        '<path class="ribbon-face" fill="url(#' + face + ')" d="M220 0C283 1 340 22 381 49C415 72 415 101 382 117C344 135 280 139 220 150L220 108C274 98 312 84 326 69C341 52 297 21 220 0Z"/>' +
-        '<path class="ribbon-edge" d="M220 150C280 139 344 135 382 117C415 101 415 72 381 49"/>' +
-        '</svg>' + item + '</li>';
-    }).join('') + '</ol>';
-  }
-
   function renderTimeline() {
-    var byCode = MODULOS.slice().sort(function (a, b) { return a.n - b.n; });
-    var modules = byCode.map(function (m) {
-      return '<button class="ribbon-node' + (isDone(m.id) ? ' done' : '') + '" type="button" data-id="' + esc(m.id) +
-        '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '" title="' + esc(m.titulo) + '">' +
-        icon(m.icono) + '<span>' + esc(m.codigo.replace('BTVDS ', '')) + '</span></button>';
-    });
-    setHTML($("#timeline"), ribbonMarkup(modules));
+    var modules = MODULOS.slice().sort(function (a, b) { return a.n - b.n; });
+    var curve = 'M50 0';
+    var steps = modules.map(function (m, i) {
+      var y = i * 100;
+      var side = i % 2 === 0 ? 8 : 92;
+      curve += 'C' + side + ' ' + y + ' ' + side + ' ' + (y + 100) + ' 50 ' + (y + 100);
+      return '<li class="route-step" style="--step-delay:' + (i * 95) + 'ms">' +
+        '<span class="route-medallion" aria-hidden="true">' + icon(m.icono) + '</span>' +
+        '<button class="route-capsule' + (isDone(m.id) ? ' done' : '') + '" type="button" data-id="' + esc(m.id) +
+        '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '">' +
+        '<span class="route-code">' + esc(m.codigo.replace('BTVDS ', '')) + '</span>' +
+        '<span class="route-title">' + esc(m.titulo) + '</span></button></li>';
+    }).join('');
+    setHTML($("#timeline"), '<div class="route-relief">' +
+      '<svg class="route-curve" viewBox="0 0 100 ' + (modules.length * 100) + '" preserveAspectRatio="none" aria-hidden="true">' +
+      '<path class="route-curve-base" pathLength="1" d="' + curve + '"/>' +
+      '<path class="route-curve-light" pathLength="1" d="' + curve + '"/></svg>' +
+      '<ol class="route-steps" aria-label="Módulos oficiales">' + steps + '</ol></div>');
   }
 
   /* ------------------------------ equipo ------------------------------ */
