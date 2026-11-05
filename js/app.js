@@ -520,29 +520,35 @@
       '<span class="who">' + esc(meta) + '</span></button>';
   }
 
+  function treeMarkup(items, label) {
+    return '<ol class="route-tree" aria-label="' + esc(label) + '">' + items.map(function (item, i) {
+      return '<li class="tree-row" style="--branch-delay:' + ((items.length - i - 1) * 90) + 'ms">' +
+        '<svg class="tree-branch" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true">' +
+        '<path pathLength="1" d="M0 59 C0 24 27 35 53 17 C68 7 79 3 100 3"/></svg>' +
+        '<div class="tree-leaf">' + item + '</div></li>';
+    }).join('') + '</ol>';
+  }
+
   function renderTimeline() {
     var byCode = MODULOS.slice().sort(function (a, b) { return a.n - b.n; });
-    var modules = byCode.map(function (m) {
-      return '<li><h4 class="route-label">' + esc(m.codigo) + '</h4>' +
-        timelineButton(m, m, teacherOf(m)) + '</li>';
-    }).join('');
-
     var groups = {};
-    byCode.forEach(function (m) {
+    var modules = byCode.map(function (m) {
       m.temas.forEach(function (topic) {
         if (!MONTHS[topic.mes]) return;
         (groups[topic.mes] = groups[topic.mes] || []).push(timelineButton(topic, m, m.codigo + ' · ' + topic.periodo));
       });
+      return '<button class="tree-node' + (isDone(m.id) ? ' done' : '') + '" type="button" data-id="' + esc(m.id) +
+        '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '" title="' + esc(m.titulo) + '">' +
+        icon(m.icono) + '<span>' + esc(m.codigo.replace('BTVDS ', '')) + '</span></button>';
     });
     var months = Object.keys(groups).map(Number).sort(function (a, b) { return a - b; }).map(function (month) {
-      return '<li><h4 class="route-label">' + esc(MONTHS[month]) + '</h4><div class="route-events">' +
-        groups[month].join('') + '</div></li>';
-    }).join('');
+      return '<details class="tree-month"><summary class="tree-node">' + icon('clipboard') +
+        '<span>' + esc(MONTHS[month]) + '</span></summary><div class="tree-topics">' +
+        groups[month].join('') + '</div></details>';
+    });
 
-    setHTML($("#timeline"), '<div><h3>Por módulo</h3><p>De BTVDS 3.0 a 3.8.</p><ol class="route-track">' +
-      modules + '</ol></div><div><h3>Por mes de trabajo</h3>' +
-      '<p>Cada tema aparece en el mes en que empezó, con su período completo registrado.</p>' +
-      '<ol class="route-track">' + months + '</ol></div>');
+    setHTML($("#routeModules"), treeMarkup(modules, 'Módulos oficiales'));
+    setHTML($("#routeMonths"), treeMarkup(months, 'Meses de inicio de los trabajos'));
   }
 
   /* ------------------------------ equipo ------------------------------ */
@@ -661,6 +667,17 @@
     });
 
     // Timeline
+    $("#routeViews").addEventListener("click", function (e) {
+      var button = e.target.closest("[data-route-view]");
+      if (!button) return;
+      var months = button.dataset.routeView === "months";
+      $("#routeModules").hidden = months;
+      $("#routeMonths").hidden = !months;
+      $$("#routeViews button").forEach(function (choice) {
+        choice.setAttribute("aria-pressed", String(choice === button));
+      });
+    });
+
     $("#timeline").addEventListener("click", function (e) {
       var b = e.target.closest("[data-id]");
       if (b) openModal(b.getAttribute("data-id"));

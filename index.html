@@ -23,7 +23,7 @@
       } catch (e) { /* sin almacenamiento: se queda en oscuro */ }
     })();
   </script>
-  <link rel="stylesheet" href="css/styles.css?v=20261105.1">
+  <link rel="stylesheet" href="css/styles.css?v=20261105.2">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -139,14 +139,18 @@
 
     <section class="section section-alt" id="ruta">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="kicker">02 · Ruta del año</p>
-            <h2>La ruta<br>del año.</h2>
+        <div class="route-heading">
+          <p class="kicker">02 · Ruta del año</p>
+          <h2>La ruta del año</h2>
+          <div id="routeViews" class="chips" role="group" aria-label="Vista de la línea de tiempo">
+            <button class="chip" type="button" data-route-view="modules" aria-pressed="true">Módulos</button>
+            <button class="chip" type="button" data-route-view="months" aria-pressed="false">Meses</button>
           </div>
-          <p class="section-note">Recorre los módulos oficiales en orden o explora los trabajos por mes. Selecciona un hito para abrir su ficha.</p>
         </div>
-        <div class="route-timelines" id="timeline"></div>
+        <div id="timeline">
+          <div id="routeModules"></div>
+          <div id="routeMonths" hidden></div>
+        </div>
       </div>
     </section>
 
@@ -305,8 +309,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data/modulos.js?v=20261105.1"></script>
-  <script src="js/app.js?v=20261105.1"></script>
-  <script src="js/carousel.js?v=20261105.1"></script>
+  <script src="data/modulos.js?v=20261105.2"></script>
+  <script src="js/app.js?v=20261105.2"></script>
+  <script src="js/carousel.js?v=20261105.2"></script>
 </body>
 </html>
