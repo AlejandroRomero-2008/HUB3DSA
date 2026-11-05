@@ -612,34 +612,19 @@ h2 {
 .empty b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 4px; }
 
 /* ------------------------------ timeline ------------------------------ */
-.timeline { position: relative; margin-top: 10px; }
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 11px;
-  top: 8px;
-  bottom: 8px;
-  width: 1px;
-  background: linear-gradient(var(--line-strong), var(--line), transparent);
-}
-.tl-month { position: relative; padding: 0 0 34px 44px; }
-.tl-month:last-child { padding-bottom: 0; }
-.tl-month::before {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 6px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--ink);
-  box-shadow: 0 0 0 4px var(--bg);
-}
-.tl-label { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
-.tl-label b { font-family: var(--display); font-size: 20px; letter-spacing: -.02em; }
-.tl-label span { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.tl-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 9px; }
+.route-timelines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 68px); }
+.route-timelines h3 { margin: 0 0 4px; font-size: 23px; }
+.route-timelines p { margin: 0 0 22px; color: var(--muted); }
+.route-track { list-style: none; margin: 0 0 0 6px; padding: 0 0 0 20px; border-left: 1px solid var(--line-strong); }
+.route-track > li { position: relative; padding-bottom: 18px; }
+.route-track > li::before { content: ""; position: absolute; inset: 5px auto auto -25px; width: 9px; height: 9px; border: 2px solid var(--ink); background: var(--bg); border-radius: 50%; }
+.route-label { margin: 0 0 7px; font: 600 12px var(--mono); }
+.route-events { display: grid; gap: 6px; }
+.route-track .tl-item { width: 100%; flex-wrap: wrap; gap: 5px 10px; }
+.route-track .t { flex-basis: 100%; overflow-wrap: anywhere; }
+.route-track .who { white-space: normal; }
+.route-track .done .t::after { content: " ✓"; }
+@media (max-width: 760px) { .route-timelines { grid-template-columns: 1fr; } }
 .tl-item {
   display: flex;
   align-items: center;
@@ -1131,8 +1116,6 @@ body.modal-open { overflow: hidden; }
   .tabs { padding: 0 12px; }
   .tab-panel { padding: 18px; }
   .modal-close { margin: 10px 10px 0 0; }
-  .tl-month { padding-left: 34px; }
-  .tl-items { grid-template-columns: 1fr; }
   .quiz-top { align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {

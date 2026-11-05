@@ -513,18 +513,36 @@
   }
 
   /* ------------------------------ timeline ------------------------------ */
+  function timelineButton(item, module, meta) {
+    return '<button class="tl-item' + (isDone(module.id) ? ' done' : '') +
+      '" type="button" data-id="' + esc(item.id) + '">' +
+      '<span class="t">' + esc(item.titulo) + '</span>' +
+      '<span class="who">' + esc(meta) + '</span></button>';
+  }
+
   function renderTimeline() {
+    var byCode = MODULOS.slice().sort(function (a, b) { return a.n - b.n; });
+    var modules = byCode.map(function (m) {
+      return '<li><h4 class="route-label">' + esc(m.codigo) + '</h4>' +
+        timelineButton(m, m, teacherOf(m)) + '</li>';
+    }).join('');
+
     var groups = {};
-    MODULOS.forEach(function (m) { (groups[m.mes] = groups[m.mes] || []).push(m); });
-    var order = Object.keys(groups).map(Number).sort(function (a, b) { return a - b; });
-    setHTML($("#timeline"), order.map(function (mes) {
-      var list = groups[mes].sort(function (a, b) { return a.n - b.n; });
-      return '<div class="tl-month"><div class="tl-label"><b>' + esc(mes === 0 ? "Módulos oficiales" : (MONTHS[mes] || "2026")) + '</b><span>' + list.length + (list.length === 1 ? " módulo" : " módulos") + "</span></div><div class=\"tl-items\">" +
-        list.map(function (m) {
-          return '<button class="tl-item' + (isDone(m.id) ? " done" : "") + '" type="button" data-id="' + esc(m.id) + '"><span class="n">' + pad(m.n) + '</span><span class="t">' + esc(m.titulo) + '</span><span class="who">' + esc(teacherOf(m).split(" ")[0]) + "</span></button>";
-        }).join("") +
-      "</div></div>";
-    }).join(""));
+    byCode.forEach(function (m) {
+      m.temas.forEach(function (topic) {
+        if (!MONTHS[topic.mes]) return;
+        (groups[topic.mes] = groups[topic.mes] || []).push(timelineButton(topic, m, m.codigo + ' · ' + topic.periodo));
+      });
+    });
+    var months = Object.keys(groups).map(Number).sort(function (a, b) { return a - b; }).map(function (month) {
+      return '<li><h4 class="route-label">' + esc(MONTHS[month]) + '</h4><div class="route-events">' +
+        groups[month].join('') + '</div></li>';
+    }).join('');
+
+    setHTML($("#timeline"), '<div><h3>Por módulo</h3><p>De BTVDS 3.0 a 3.8.</p><ol class="route-track">' +
+      modules + '</ol></div><div><h3>Por mes de trabajo</h3>' +
+      '<p>Cada tema aparece en el mes en que empezó, con su período completo registrado.</p>' +
+      '<ol class="route-track">' + months + '</ol></div>');
   }
 
   /* ------------------------------ equipo ------------------------------ */
