@@ -513,13 +513,6 @@
   }
 
   /* ------------------------------ timeline ------------------------------ */
-  function timelineButton(item, module, meta) {
-    return '<button class="tl-item' + (isDone(module.id) ? ' done' : '') +
-      '" type="button" data-id="' + esc(item.id) + '">' +
-      '<span class="t">' + esc(item.titulo) + '</span>' +
-      '<span class="who">' + esc(meta) + '</span></button>';
-  }
-
   function treeMarkup(items, label) {
     return '<ol class="route-tree" aria-label="' + esc(label) + '">' + items.map(function (item, i) {
       return '<li class="tree-row" style="--branch-delay:' + ((items.length - i - 1) * 90) + 'ms">' +
@@ -531,24 +524,12 @@
 
   function renderTimeline() {
     var byCode = MODULOS.slice().sort(function (a, b) { return a.n - b.n; });
-    var groups = {};
     var modules = byCode.map(function (m) {
-      m.temas.forEach(function (topic) {
-        if (!MONTHS[topic.mes]) return;
-        (groups[topic.mes] = groups[topic.mes] || []).push(timelineButton(topic, m, m.codigo + ' · ' + topic.periodo));
-      });
       return '<button class="tree-node' + (isDone(m.id) ? ' done' : '') + '" type="button" data-id="' + esc(m.id) +
         '" aria-label="' + esc(m.codigo + ': ' + m.titulo) + '" title="' + esc(m.titulo) + '">' +
         icon(m.icono) + '<span>' + esc(m.codigo.replace('BTVDS ', '')) + '</span></button>';
     });
-    var months = Object.keys(groups).map(Number).sort(function (a, b) { return a - b; }).map(function (month) {
-      return '<details class="tree-month"><summary class="tree-node">' + icon('clipboard') +
-        '<span>' + esc(MONTHS[month]) + '</span></summary><div class="tree-topics">' +
-        groups[month].join('') + '</div></details>';
-    });
-
-    setHTML($("#routeModules"), treeMarkup(modules, 'Módulos oficiales'));
-    setHTML($("#routeMonths"), treeMarkup(months, 'Meses de inicio de los trabajos'));
+    setHTML($("#timeline"), treeMarkup(modules, 'Módulos oficiales'));
   }
 
   /* ------------------------------ equipo ------------------------------ */
@@ -667,17 +648,6 @@
     });
 
     // Timeline
-    $("#routeViews").addEventListener("click", function (e) {
-      var button = e.target.closest("[data-route-view]");
-      if (!button) return;
-      var months = button.dataset.routeView === "months";
-      $("#routeModules").hidden = months;
-      $("#routeMonths").hidden = !months;
-      $$("#routeViews button").forEach(function (choice) {
-        choice.setAttribute("aria-pressed", String(choice === button));
-      });
-    });
-
     $("#timeline").addEventListener("click", function (e) {
       var b = e.target.closest("[data-id]");
       if (b) openModal(b.getAttribute("data-id"));

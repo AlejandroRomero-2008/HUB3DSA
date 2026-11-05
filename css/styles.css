@@ -614,28 +614,20 @@ h2 {
 /* ------------------------------ timeline ------------------------------ */
 .route-heading { text-align: center; margin-bottom: 30px; }
 .route-heading h2 { font-size: clamp(2.25rem, 6vw, 4.25rem); margin: 0 0 18px; line-height: 1.05; }
-#routeViews { justify-content: center; }
+.route-heading .section-note { margin-inline: auto; }
 .route-tree { --branch-width: clamp(30px, 15vw, 140px); position: relative; list-style: none; max-width: 720px; margin: 0 auto; padding: 0 0 36px; }
-.route-tree::before { content: ""; position: absolute; inset: 53px auto 0 50%; width: 4px; margin-left: -2px; border-radius: 4px; background: var(--ink); opacity: .62; transform-origin: bottom; }
-.route-tree::after { content: ""; position: absolute; bottom: 0; left: 50%; width: 92px; height: 3px; transform: translateX(-50%); border-radius: 3px; background: var(--ink); opacity: .62; }
-.tree-row { position: relative; min-height: 104px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.route-tree::before { content: ""; position: absolute; inset: 94px auto 0 50%; width: 12px; margin-left: -6px; border-radius: 4px; background: var(--ink); opacity: .82; transform-origin: bottom; }
+.route-tree::after { content: ""; position: absolute; bottom: 0; left: 50%; width: 92px; height: 5px; transform: translateX(-50%); border-radius: 3px; background: var(--ink); opacity: .82; }
+.tree-row { position: relative; min-height: 104px; }
 .tree-branch { position: absolute; width: var(--branch-width); height: 60px; left: 50%; top: 40px; overflow: visible; }
-.tree-branch path { fill: none; stroke: var(--ink); stroke-width: 4; vector-effect: non-scaling-stroke; stroke-linecap: round; opacity: .62; }
-.tree-leaf { grid-column: 2; margin-left: calc(var(--branch-width) - 8px); min-width: 0; z-index: 1; }
+.tree-branch path { fill: none; stroke: var(--ink); stroke-width: 9; vector-effect: non-scaling-stroke; stroke-linecap: round; opacity: .82; }
+.tree-leaf { position: absolute; top: 0; left: calc(50% + var(--branch-width) - 8px); z-index: 1; }
 .tree-row:nth-child(odd) .tree-branch { transform: scaleX(-1); transform-origin: left; }
-.tree-row:nth-child(odd) .tree-leaf { grid-column: 1; margin-left: 0; margin-right: calc(var(--branch-width) - 8px); justify-self: stretch; }
-.tree-row:nth-child(odd) .tree-node { margin-left: auto; }
+.tree-row:nth-child(odd) .tree-leaf { left: auto; right: calc(50% + var(--branch-width) - 8px); }
 .tree-node { width: clamp(74px, 15vw, 92px); aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; border-radius: 50%; border: 1px solid var(--line-strong); color: var(--ink); background: var(--bg-elev); box-shadow: inset 0 0 0 6px var(--panel-3); font: 700 clamp(10px, 2.5vw, 13px) var(--mono); cursor: pointer; transition: transform .18s ease, border-color .18s ease; }
 .tree-node svg { width: 20px; height: 20px; }
 .tree-node:hover { border-color: var(--ink); transform: translateY(-2px); }
 .tree-node.done span::after { content: " ✓"; }
-.tree-node::-webkit-details-marker { display: none; }
-.tree-month { max-width: 100%; }
-.tree-row:nth-child(odd) .tree-month summary { margin-left: auto; }
-.tree-topics { display: grid; grid-template-columns: minmax(0, 1fr); gap: 5px; margin: 8px 0 16px; }
-.tree-topics .tl-item { width: 100%; flex-wrap: wrap; }
-.tree-topics .t { flex-basis: 100%; overflow-wrap: anywhere; }
-.tree-topics .who { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 @media (prefers-reduced-motion: no-preference) {
   #ruta.section-visible .route-tree::before { animation: tree-grow .8s ease-out both; }
   #ruta.section-visible .tree-branch path { stroke-dasharray: 1; animation: branch-grow .45s ease-out calc(.3s + var(--branch-delay)) both; }
