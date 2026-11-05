@@ -616,8 +616,8 @@ h2 {
 .route-heading h2 { font-size: clamp(2.25rem, 6vw, 4.25rem); margin: 0 0 18px; line-height: 1.05; }
 .route-heading .section-note { margin-inline: auto; }
 .route-relief {
-  --route-axis: clamp(98px, 20vw, 144px);
-  --route-row: 116px;
+  --route-axis: clamp(122px, 23vw, 182px);
+  --route-row: 134px;
   --route-gap: clamp(6px, 2vw, 22px);
   position: relative;
   max-width: 580px;
@@ -635,15 +635,15 @@ h2 {
   justify-self: center;
   display: grid;
   place-items: center;
-  width: clamp(62px, 12vw, 88px);
+  width: clamp(76px, 15vw, 112px);
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
-  color: var(--ink);
-  background: radial-gradient(circle at 32% 24%, var(--panel-3), transparent 65%), var(--bg-elev);
+  color: #fff;
+  background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.16), transparent 65%), rgba(0,0,0,.72);
   box-shadow: inset 0 0 0 4px var(--panel), inset 0 -5px 8px rgba(0,0,0,.12), 0 8px 14px rgba(0,0,0,.27);
 }
-.route-medallion svg { width: clamp(25px, 4.5vw, 35px); height: clamp(25px, 4.5vw, 35px); }
+.route-medallion svg { width: clamp(29px, 5vw, 43px); height: clamp(29px, 5vw, 43px); }
 .route-capsule {
   grid-area: 1 / 3;
   position: relative;
@@ -670,7 +670,7 @@ h2 {
 .route-capsule.done .route-code::after { content: " ✓"; font-size: .6em; }
 .route-capsule:hover, .route-capsule:focus-visible { transform: translateY(-3px); border-color: var(--ink); }
 @media (max-width: 540px) {
-  .route-relief { --route-row: 94px; }
+  .route-relief { --route-row: 104px; }
   .route-capsule, .route-step:nth-child(even) .route-capsule { min-height: 44px; padding: 6px; border-radius: 22px; }
 }
 @media (prefers-reduced-motion: no-preference) {
