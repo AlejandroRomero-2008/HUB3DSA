@@ -674,10 +674,13 @@ h2 {
   .route-capsule, .route-step:nth-child(even) .route-capsule { min-height: 44px; padding: 6px; border-radius: 22px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  #ruta.section-visible .route-curve path { stroke-dasharray: 1; animation: route-draw 1.2s ease-out both; }
+  #ruta.section-visible .route-curve { animation: route-draw 1.2s ease-out; }
   #ruta.section-visible .route-medallion, #ruta.section-visible .route-capsule { animation: route-rise .45s ease-out var(--step-delay) backwards; }
 }
-@keyframes route-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes route-draw {
+  from { clip-path: inset(-16px -16px 100%); }
+  to { clip-path: inset(-16px); }
+}
 @keyframes route-rise { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .route-capsule { transition: none; } .route-capsule:hover, .route-capsule:focus-visible { transform: none; } }
 
